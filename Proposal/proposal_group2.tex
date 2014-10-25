@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\  : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{}\nobreak
+\nobreak\extramarks{}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{}{}\nobreak
+\nobreak\extramarks{}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Project Proposal} % Assignment title
+\newcommand{\hmwkClass}{ECSE\ 548} % Course/class
+\newcommand{\hmwkAuthorName}{Group 2} % Your name
+
+\begin{document}
+
+\title{ECSE 548 (VLSI) Project Proposal - Direct-Mapped Cache}
+\date{}
+\author{Group 2}
+\maketitle
+
+\section{Group Members}
+
+Guang Yang (260510361), Viola Fang (260498315), Hassan Anwar (260649464), Chao Chen (260649469), Yan Li (260613055)
+
+\section{Proposed Design}
+
+- 128-bit Direct-Mapped Cache \\
+- Cache Controller
+
+\section{Deisgn Plan / Main Components}
+
+- \textbf{Memory:} Main component of the cache which stores all the cache memory data. Memory cells are implemented using flip-flops/srams with read and write enable signals. Each memory line consists of 8 bits of data, a 6-bit tag* and a 4-bit set. This means the Cache stores data in 16 8-bit caches sets, capable of storing 4 machine instructions for a CPU in total. \\
+- \textbf{Muxes/Demuxes:} Muxes and demuxes are used for memory decoding and encoding. \\
+- \textbf{Comparator:} Deisnged from a full adder, used to compare the tags of data from the memory. \\
+\textit{*We are assuming that the CPU we are deisgning a Cache for is using a memory of 1024 bytes (1KB) in size}
+
+\section{Evaluation Approach}
+
+- Time performance and power consumption evaluation using \textit{SPICE} \\
+- Area estimation (From layout in Electric) \\
+- SystemVerilog testbenches to prove correctness \\
+- \textbf{\textit{Potential}} Integration with MIPS (time permitting) \\
+- \textbf{\textit{Potential}} performance comparison with a \textit{N-way Set-Associative Cache} (time permitting) \\
+
+\section{Deliverables for Mid-Project Status Report}
+
+- Microarchitecture\\
+- Schematics of Cache and Cache Controller \\
+- Standard library cells \\
+- SystemVerilog testbenches \\
+- \textbf{\textit{Potential}} SPICE simulation results
+
+\end{document}
