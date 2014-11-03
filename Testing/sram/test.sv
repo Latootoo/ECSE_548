@@ -3,7 +3,7 @@ module testbench();
     logic f;
     logic [3:0] s;
     logic [15:0] y, expected;
-    logic [20:0] vectors[7:0], currentvec;
+    logic [2:0] vectors[7:0], currentvec;
     logic [3:0] vectornum, errors;
 
 	logic out, out_b;
@@ -13,7 +13,7 @@ module testbench();
     // device under test
     //sramread dut(clk, clk, out, out_b);;
 	//sramwrite dut(in, clk, clk, we);
-	sramrw dut(in, clk, clk, we, out, out_b);
+	sramrw dut(in, ~clk, ~clk, we, out, out_b);
 	// read test file and initialize test
     initial begin
         $readmemb("test-vectors.txt", vectors);
@@ -44,8 +44,8 @@ endmodule /* testbench */
 
 /* Verilog for cell 'sramrw{sch}' from library 'vlsi' */
 /* Created on Thu Oct 30, 2014 23:37:31 */
-/* Last revised on Sat Nov 01, 2014 13:51:55 */
-/* Written on Sat Nov 01, 2014 13:52:04 by Electric VLSI Design System, version 8.06 */
+/* Last revised on Mon Nov 03, 2014 13:19:37 */
+/* Written on Mon Nov 03, 2014 13:20:08 by Electric VLSI Design System, version 8.06 */
 
 module muddlib07__inv_1x(a, y);
   input a;
