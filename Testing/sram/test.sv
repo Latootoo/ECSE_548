@@ -76,8 +76,8 @@ module sram(clk, we, wl, tag_in, data_in, tag_out, data_out);
 		end
 	end
 		
-	assign	tag_out = ramT[addr];
-	assign	data_out = ramD[addr];
+	assign	tag_out = we ? tag_in : ramT[addr];
+	assign	data_out = we ? data_in : ramD[addr];
 	
 endmodule
 
