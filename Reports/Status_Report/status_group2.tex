@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\  : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{}\nobreak
+\nobreak\extramarks{}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{}{}\nobreak
+\nobreak\extramarks{}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Project Proposal} % Assignment title
+\newcommand{\hmwkClass}{ECSE\ 548} % Course/class
+\newcommand{\hmwkAuthorName}{Group 2} % Your name
+
+\begin{document}
+\title{ECSE 548 (VLSI) Project Proposal - Direct-Mapped Cache}
+\date{}
+\author{Group 2}
+\maketitle
+
+\section{Progress on Achieving Goals indicated in Proposal}
+- Microarchitecture : \textbf{Done} \\ \\
+- Schematics of Cache (whole circuit and each component) :  \textbf{Done} \\ \\
+- System Verilog Testbenches : \textbf{Partially Done} - Every component (\textbf{Mux, Demux, Comparator, SRAM Array}) except \textit{srams} were tested because \textit{srams} are analog and need to be tested using analog simulation software (SPICE in our case). SPICE simulations are in progress.
+ \\ \\
+- Schematics of Cache Controller : \textbf{Not Done} \\
+	\textit{1.} Not enough time (midterms and paper submissions); \\
+	 \textit{2.} We encountered design issues with Cache Controller (please refer to next section for more details)
+
+\section{Problems Encountered So Far}
+
+\textit{1.} Wrong assumption on the memory size of MIPS. - This was resolved after the clarifications from the Professor Meyer and the corresponding changes in design are represented in next section. \\ \\
+\textit{2.} We discussed about two write policies: \textit{write-through} and \textit{write-back}. Due to controller complexity of write-back, we prefer to go for \textit{write-through}. \\ \\
+\textit{3.} After read/write-miss, we have some issues  for the ouput at this particular time: usually  simple processors are supposed to wait. We need to discuss this with Professor.
+
+\section{Modifications in Design}
+\textit{1.} We corrected assumptions on memory size of MIPS to 256 Bytes. The sizes of Tag and Set signals were re-adjusted to 4-bit and 4-bit respectively according to the corrected assumption. \\ \\
+\textit{2.} For the performance evaluation, SPICE simulation is a must instead of a potential option. \\ \\
+\textit{3.} Integration to MIPS becomes a must instead of a potential option. \\ \\
+
+
+\end{document}
