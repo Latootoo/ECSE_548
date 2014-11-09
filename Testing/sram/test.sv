@@ -1,6 +1,6 @@
 module testbench();
     logic clk;
-	logic [7:0] expected_tag;
+	logic [3:0] expected_tag;
 	logic [7:0] expected_data;
 	
 	logic [40:0] vectors[100:0], currentvec;
