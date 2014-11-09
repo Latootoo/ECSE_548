@@ -1,9 +1,9 @@
 module testbench();
     logic clk;
-    logic f;
-    logic [3:0] s;
-    logic [15:0] y, expected;
-    logic [28:0] vectors[100:0], currentvec;
+	logic [7:0] expected_tag;
+	logic [7:0] expected_data;
+	
+	logic [40:0] vectors[100:0], currentvec;
     logic [3:0] vectornum, errors;
 
 	logic we;
@@ -15,11 +15,10 @@ module testbench();
 	
     // device under test
 	sram dut(clk, we, wl, tag_in, data_in, tag_out, data_out);
-	//encoder dut(wl, tag_out);
-	
+			
 	// read test file and initialize test
     initial begin
-        $readmemb("test-vectors.txt", vectors);
+        $readmemb("test-out.txt", vectors);
         vectornum = 0; errors = 0;
     end
     // generate clock
@@ -34,14 +33,27 @@ module testbench();
 		data_in = currentvec[24:17];
 		tag_in = currentvec[28:25];
 		
-		
         if (currentvec[0] === 1'bx) begin
+			$display("Completed %d tests with %d errors.", 
+				vectornum, errors);
             $stop;
         end
     end
     // check errors
     always @(negedge clk) begin
-
+		expected_data = currentvec[36:29];
+		expected_tag = currentvec[40:37];
+		if (tag_out !== expected_tag) begin
+            $display("At %h, tag output mismatches as %h (%h expected)", 
+                        vectornum, tag_out, expected_tag);
+            errors = errors + 1;
+        end
+		if (data_out !== expected_data) begin
+            $display("At %h, data output mismatches as %h (%h expected)", 
+                        vectornum, data_out, expected_data);
+            errors = errors + 1;
+        end
+		
         vectornum = vectornum + 1;
     end
 endmodule /* testbench */
