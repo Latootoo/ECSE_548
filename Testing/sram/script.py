@@ -23,12 +23,13 @@ for i in range(len(lines)):
 	data_in = line[17:25]
 	tag_in = line[25:29]
 
+	tag_out = cache_tag[addr]
+	data_out = cache_data[addr]
+
 	if (we=='1'):
 		cache_tag[addr] = tag_in
 		cache_data[addr] = data_in
 
-	tag_out = cache_tag[addr]
-	data_out = cache_data[addr]
 
 	nLine = line + data_out + tag_out
 	nLines.append(nLine[::-1])
