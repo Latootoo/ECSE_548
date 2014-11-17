@@ -646,6 +646,87 @@ Edata_out[7:0]||D5G2;X1.5;Y5;|pin@45||O
 Es[3:0]||D5G2;|pin@62||I
 X
 
+# Cell cache;1{ic}
+Ccache;1{ic}||artwork|1416181620592|1416181640296|E
+Ngeneric:Facet-Center|art@0||0|0||||AV
+NOpened-Thicker-Polygon|art@1||0|0|6|10|||SCHEM_function(D5G2;)Scache|trace()V[-3/-5,-3/5,3/5,3/-5,-3/-5]
+Nschematic:Bus_Pin|pin@0||-5|3||||
+Ngeneric:Invisible-Pin|pin@1||-3|3|1|1||
+Nschematic:Bus_Pin|pin@2||-5|-1||||
+Nschematic:Wire_Pin|pin@3||-3|-1||||
+Nschematic:Bus_Pin|pin@4||-5|1||||
+Ngeneric:Invisible-Pin|pin@5||-3|1|1|1||
+Nschematic:Bus_Pin|pin@6||5|1||||
+Ngeneric:Invisible-Pin|pin@7||3|1|1|1||
+Nschematic:Bus_Pin|pin@8||5|-1||||
+Nschematic:Wire_Pin|pin@9||3|-1||||
+Nschematic:Bus_Pin|pin@10||-5|-3||||
+Nschematic:Wire_Pin|pin@11||-3|-3||||
+Aschematic:bus|net@0|||IJ0|pin@1||-3|3|pin@0||-5|3
+Aschematic:wire|net@1|||0|pin@3||-3|-1|pin@2||-5|-1
+Aschematic:bus|net@2|||IJ0|pin@5||-3|1|pin@4||-5|1
+Aschematic:bus|net@3|||IJ1800|pin@7||3|1|pin@6||5|1
+Aschematic:wire|net@4|||1800|pin@9||3|-1|pin@8||5|-1
+Aschematic:wire|net@5|||0|pin@11||-3|-3|pin@10||-5|-3
+Eaddress[7:0]||D5G2;|pin@0||I
+Eclk||D5G2;|pin@2||I
+Edata_in[7:0]||D5G2;|pin@4||I
+Edata_out[7:0]||D5G2;|pin@6||O
+Ehit||D5G2;|pin@8||O
+Ewe||D5G2;|pin@10||I
+X
+
+# Cell cache;1{sch}
+Ccache;1{sch}||schematic|1416180843171|1416181622048|
+Ngeneric:Facet-Center|art@0||0|0||||AV
+Icache;1{ic}|cache@0||54|19|||D5G4;
+Icomp2_1x_4;1{ic}|comp2_1x@0||30|5|||D5G4;
+Idecoder16_1x;1{ic}|decoder1@0||0|-1|||D5G4;
+NBus_Pin|pin@0||-20|12||||
+NBus_Pin|pin@1||-13|12||||
+NBus_Pin|pin@2||-20|8||||
+NBus_Pin|pin@3||-13|8||||
+NBus_Pin|pin@4||15|-9||||
+NBus_Pin|pin@5||19|-9||||
+NBus_Pin|pin@6||-7|-1||||
+NWire_Pin|pin@7||-20|5||||
+NWire_Pin|pin@8||-13|5||||
+NWire_Pin|pin@9||-20|2||||
+NWire_Pin|pin@10||-13|2||||
+NWire_Pin|pin@11||8|5||||
+NWire_Pin|pin@12||8|2||||
+NBus_Pin|pin@13||23|7||||
+NWire_Pin|pin@14||38|5||||
+NBus_Pin|pin@15||27|-1||||
+NBus_Pin|pin@16||45|12||||
+NBus_Pin|pin@17||40|12||||
+NWire_Pin|pin@18||45|9||||
+NWire_Pin|pin@19||40|9||||
+Isram;1{ic}|sram@0||17|1|||D5G4;
+Abus|address[3:0]|D5G1;||IJ0|decoder1@0|a[3:0]|-4|-1|pin@6||-7|-1
+Abus|address[7:4]|D5G1;||IJ900|sram@0|tag_in[3:0]|15|-6|pin@4||15|-9
+Abus|address[7:4]|D5G1;||IJ0|comp2_1x@0|a[3:0]|26|7|pin@13||23|7
+Awire|clk|D5G1;||0|sram@0|clk|12|5|pin@11||8|5
+Abus|data_in[7:0]|D5G1;||IJ900|sram@0|in[11:0]|19|-6|pin@5||19|-9
+Abus|data_out[7:0]|D5G1;||IJ1800|sram@0|data_out[7:0]|22|-1|pin@15||27|-1
+Awire|hit|D5G1;||1800|comp2_1x@0|status|34|5|pin@14||38|5
+Abus|net@0|||IJ1800|pin@0||-20|12|pin@1||-13|12
+Abus|net@1|||IJ1800|pin@2||-20|8|pin@3||-13|8
+Abus|net@4|||IJ1800|decoder1@0|y[15:0]|4|-1|sram@0|wl[15:0]|12|-1
+Awire|net@6|||1800|pin@7||-20|5|pin@8||-13|5
+Awire|net@7|||1800|pin@9||-20|2|pin@10||-13|2
+Abus|net@8|||IJ1800|sram@0|tag_out[3:0]|22|3|comp2_1x@0|b[3:0]|26|3
+Abus|net@11|||IJ0|pin@16||45|12|pin@17||40|12
+Awire|net@12|||0|pin@18||45|9|pin@19||40|9
+Awire|we|D5G1;||0|sram@0|we|12|2|pin@12||8|2
+Eaddress[7:0]||D5G2;|pin@0||I
+Eclk||D5G2;|pin@7||I
+Edata_in[7:0]||D5G2;|pin@2||I
+Edata_out[7:0]||D5G2;|pin@16||O
+Ehit||D5G2;|pin@18||O
+Ewe||D5G2;|pin@9||I
+X
+
 # Cell comp2_1x_4;1{ic}
 Ccomp2_1x_4;1{ic}||artwork|1414682855160|1415052848367|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
@@ -1424,15 +1505,13 @@ Ey||D5G2;|pin@3||O
 X
 
 # Cell sram;1{ic}
-Csram;1{ic}||artwork|1415056890696|1415061261516|E
+Csram;1{ic}||artwork|1415056890696|1416180340562|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||0|0|6|10|||SCHEM_function(D5G2;)Ssram|trace()V[-3/-5,-3/5,3/5,3/-5,-3/-5]
 Nschematic:Bus_Pin|pin@0||-5|4||||
 Nschematic:Wire_Pin|pin@1||-3|4||||
 Nschematic:Bus_Pin|pin@2||2|-7|||R|
 Ngeneric:Invisible-Pin|pin@3||2|-5|1|1|R|
-Nschematic:Bus_Pin|pin@4||5|-2|||RR|
-Ngeneric:Invisible-Pin|pin@5||3|-2|1|1|RR|
 Nschematic:Bus_Pin|pin@6||-5|1||||
 Nschematic:Wire_Pin|pin@7||-3|1||||
 Nschematic:Bus_Pin|pin@8||-5|-2||||
@@ -1441,16 +1520,18 @@ Nschematic:Bus_Pin|pin@10||-2|-7|||R|
 Ngeneric:Invisible-Pin|pin@11||-2|-5|1|1|R|
 Nschematic:Bus_Pin|pin@12||5|2|||RR|
 Ngeneric:Invisible-Pin|pin@13||3|2|1|1|RR|
+Nschematic:Bus_Pin|pin@14||5|-2|||R|
+Ngeneric:Invisible-Pin|pin@15||3|-2|1|1|R|
 Aschematic:wire|net@0|||0|pin@1||-3|4|pin@0||-5|4
 Aschematic:bus|net@1|||IJ900|pin@3||2|-5|pin@2||2|-7
-Aschematic:bus|net@2|||IJ1800|pin@5||3|-2|pin@4||5|-2
 Aschematic:wire|net@3|||0|pin@7||-3|1|pin@6||-5|1
 Aschematic:bus|net@4|||IJ0|pin@9||-3|-2|pin@8||-5|-2
 Aschematic:bus|net@5|||IJ900|pin@11||-2|-5|pin@10||-2|-7
 Aschematic:bus|net@6|||IJ1800|pin@13||3|2|pin@12||5|2
+Aschematic:bus|net@7|||IJ1800|pin@15||3|-2|pin@14||5|-2
 Eclk||D5G2;|pin@0||I
 Ein[11:0]|data_in[7:0]|D5G2;|pin@2||I
-Eout[11:0]|data_out[11:0]|D5G2;|pin@4||I
+Edata_out[7:0]||D5G2;|pin@14||U
 Etag_in[3:0]||D5G2;|pin@10||U
 Etag_out[3:0]||D5G2;|pin@12||U
 Ewe||D5G2;|pin@6||I
@@ -1458,7 +1539,7 @@ Ewl[15:0]||D5G2;|pin@8||I
 X
 
 # Cell sram;1{sch}
-Csram;1{sch}||schematic|1415056244408|1415061180351|
+Csram;1{sch}||schematic|1415056244408|1416180293128|
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NWire_Pin|pin@0||-30|25||||
 NWire_Pin|pin@3||143|25||||
@@ -1599,7 +1680,7 @@ Awire|tag_out[2]|D5G1;||900|sramcol@1|out|14|0|pin@36||14|-8
 Awire|tag_out[3]|D5G1;||900|sramcol@0|out|1|0|pin@35||1|-8
 Eclk||D5G2;|pin@0||I
 Ein[11:0]|data_in[7:0]|D5G2;|pin@19||I
-Eout[11:0]|data_out[11:0]|D5G2;|pin@21||I
+Edata_out[7:0]||D5G2;|pin@21||O
 Etag_in[3:0]||D5G2;|pin@47||I
 Etag_out[3:0]||D5G2;|pin@49||O
 Ewe||D5G2;|pin@15||I
@@ -2071,6 +2152,7 @@ X
 
 # Groups:
 GMux;1{sch}|Mux;1{ic}|Mux;1{lay}
+Gcache;1{sch}|cache;1{ic}
 Gcomp2_1x_4;2{sch}|comp2_1x_4;1{ic}|comp2_1x_4;2{lay}
 Gdecoder16_1x;1{sch}|decoder16_1x;1{ic}
 Gdemux2_1x;1{sch}|demux2_1x;1{ic}|demux2_1x;1{lay}
