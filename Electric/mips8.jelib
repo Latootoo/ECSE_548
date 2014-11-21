@@ -1448,7 +1448,7 @@ Eyzero|y[7:0]|D5G2;|pin@6||O
 X
 
 # Cell controller;1{ic}
-Ccontroller;1{ic}||artwork|1184714566421|1416184386524|E
+Ccontroller;1{ic}||artwork|1184714566421|1416587054981|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||1.5|-1.5|33|9|||SCHEM_function(D5G1;)Scontroller|trace()V[-16.5/4.5,16.5/4.5,16.5/-4.5,-16.5/-4.5,-16.5/4.5]
 Nschematic:Bus_Pin|pin@0||7|-8|||RRR|
@@ -1521,7 +1521,7 @@ Ealucontrol[2:0]||D5G2;|pin@0||O
 Ealusrca||D5G2;|pin@2||O
 Ealusrcb[1:0]||D5G2;|pin@4||O
 Ecachewrite||D5G2;|pin@53||U
-Efunct[3:0]|funct[5:0]|D5G2;|pin@6||I
+Efunct[3:0]||D5G2;|pin@6||I
 Ehit||D5G2;|pin@47||U
 Eiord||D5G2;|pin@8||O
 Eirwrite[3:0]||D5G2;|pin@10||O
@@ -2033,7 +2033,7 @@ Ezero||D5G2;|pin@45||I
 X
 
 # Cell controller;1{sch}
-Ccontroller;1{sch}||schematic|1184699784734|1416184386524|
+Ccontroller;1{sch}||schematic|1184699784734|1416587054981|
 Imuddlib07:a2o1_1x;1{ic}|a2o1_1x@0||47|-20|Y||D5G4;
 Ialudec;1{ic}|aludec@1||53|-36|||D5G4;
 Ngeneric:Facet-Center|art@0||0|0||||AV
@@ -2202,7 +2202,7 @@ Ealucontrol[2:0]||D5G2;|pin@60||O
 Ealusrca||D5G2;X-1;|pin@25||O
 Ealusrcb[1:0]||D5G2;X2;|pin@37||O
 Ecachewrite||D5G2;|pin@163||O
-Efunct[5:0]||D5G2;|pin@59||I
+Efunct[5:0]|funct[3:0]|D5G2;|pin@59||I
 Ehit||D5G2;|pin@160||I
 Eiord||D5G2;|pin@27||O
 Ealusrcb[3:0]|irwrite[3:0]|D5G2;X3;|pin@40||O
