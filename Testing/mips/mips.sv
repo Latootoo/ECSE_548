@@ -149,7 +149,7 @@ module mips #(parameter WIDTH = 8, REGBITS = 3)
       writedata[5], writedata[6], writedata[7], zero, vdd, gnd);
 				  
 	mux2       #(WIDTH)  cachemux(memdata, writedata, morw, cachedata);	
-  	cache idcache(clk, cachewrite, adr, cachedata, cacheout, hit);
+	cache idcache(adr, clk, data_in, cachewrite, data_out, hit);
 	mux2       #(WIDTH)  dpmux(memdata, cacheout, morc, dpdata);
 endmodule
 
@@ -450,7 +450,7 @@ module adder #(parameter WIDTH = 8)
   assign y = a + b + cin;
 endmodule
 
-module cache(clk, we, addr, data_in, data_out, hit);
+module cache0(clk, we, addr, data_in, data_out, hit);
 	input logic clk;
 	input logic we;
 	input logic [7:0] addr;
@@ -460,6 +460,8 @@ module cache(clk, we, addr, data_in, data_out, hit);
 	
 	logic [15:0] wl;
 	decoder dec(addr[3:0], wl);
+	//vlsi__decoder16_1x dec(addr[3:0], wl);
+
 	
 	logic [3:0] tag_in;
 	assign tag_in = addr[7:4];
@@ -3641,3 +3643,274 @@ module datapath(alucontrol, alucontrol_1, alucontrol_2, alusrca, alusrcb,
       .vdd_9(vdd), .gnd(gnd), .gnd_1(gnd), .gnd_10(gnd), .gnd_11(gnd), 
       .gnd_12(gnd), .gnd_13(gnd), .gnd_14(gnd), .gnd_15(gnd), .gnd_9(gnd));
 endmodule   /* datapath */
+
+/* Verilog for cell 'cache{sch}' from library 'vlsi' */
+/* Created on Sun Nov 16, 2014 18:34:03 */
+/* Last revised on Sun Nov 16, 2014 18:47:02 */
+/* Written on Fri Nov 21, 2014 14:04:16 by Electric VLSI Design System, version 8.06 */
+
+module muddlib07__nor4_1x(a, b, c, d, y);
+  input a;
+  input b;
+  input c;
+  input d;
+  output y;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire net_2, net_3, net_41;
+
+  tranif1 nmos_0(gnd, y, d);
+  tranif1 nmos_1(gnd, y, c);
+  tranif1 nmos_2(gnd, y, b);
+  tranif1 nmos_3(gnd, y, a);
+  tranif0 pmos_0(net_41, vdd, a);
+  tranif0 pmos_1(net_2, net_41, b);
+  tranif0 pmos_2(net_3, net_2, c);
+  tranif0 pmos_3(y, net_3, d);
+endmodule   /* muddlib07__nor4_1x */
+
+module muddlib07__xor2_1x(a, b, y);
+  input a;
+  input b;
+  output y;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire ab, bb, net_3, net_4, net_7, net_8;
+
+  tranif1 nmos_0(gnd, net_3, a);
+  tranif1 nmos_1(gnd, net_4, ab);
+  tranif1 nmos_2(net_3, y, b);
+  tranif1 nmos_3(net_4, y, bb);
+  tranif1 nmos_4(gnd, bb, b);
+  tranif1 nmos_5(gnd, ab, a);
+  tranif0 pmos_0(y, net_7, b);
+  tranif0 pmos_1(net_7, vdd, ab);
+  tranif0 pmos_2(y, net_8, bb);
+  tranif0 pmos_3(net_8, vdd, a);
+  tranif0 pmos_4(bb, vdd, b);
+  tranif0 pmos_5(ab, vdd, a);
+endmodule   /* muddlib07__xor2_1x */
+
+module vlsi__comp2_1x_4(a, b, status);
+  input [3:0] a;
+  input [3:0] b;
+  output status;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire net_16, net_20, net_24, net_28;
+
+  muddlib07__nor4_1x nor4_1x_0(.a(net_16), .b(net_20), .c(net_24), .d(net_28), 
+      .y(status));
+  muddlib07__xor2_1x xor2_1x_0(.a(a[0]), .b(b[0]), .y(net_16));
+  muddlib07__xor2_1x xor2_1x_1(.a(a[1]), .b(b[1]), .y(net_20));
+  muddlib07__xor2_1x xor2_1x_3(.a(a[2]), .b(b[2]), .y(net_24));
+  muddlib07__xor2_1x xor2_1x_4(.a(a[3]), .b(b[3]), .y(net_28));
+endmodule   /* vlsi__comp2_1x_4 */
+
+module vlsi__decoder16_1x(a, y);
+  input [3:0] a;
+  output [15:0] y;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire net_16, net_26, net_36, net_38, net_46, net_54, net_6, net_62, net_70;
+  wire net_72, net_74, net_76;
+
+  muddlib07__inv_1x inv_1x_0(.a(a[3]), .y(net_6));
+  muddlib07__inv_1x inv_1x_1(.a(a[2]), .y(net_16));
+  muddlib07__inv_1x inv_1x_2(.a(a[1]), .y(net_26));
+  muddlib07__inv_1x inv_1x_3(.a(a[0]), .y(net_36));
+  muddlib07__nand2_1x nand2_1x_0(.a(a[2]), .b(a[3]), .y(net_62));
+  muddlib07__nand2_1x nand2_1x_2(.a(net_16), .b(a[3]), .y(net_54));
+  muddlib07__nand2_1x nand2_1x_3(.a(a[2]), .b(net_6), .y(net_46));
+  muddlib07__nand2_1x nand2_1x_4(.a(net_16), .b(net_6), .y(net_38));
+  muddlib07__nand2_1x nand2_1x_5(.a(a[0]), .b(a[1]), .y(net_76));
+  muddlib07__nand2_1x nand2_1x_6(.a(net_36), .b(a[1]), .y(net_74));
+  muddlib07__nand2_1x nand2_1x_7(.a(a[0]), .b(net_26), .y(net_72));
+  muddlib07__nand2_1x nand2_1x_8(.a(net_36), .b(net_26), .y(net_70));
+  muddlib07__nor2_1x nor2_1x_0(.a(net_70), .b(net_38), .y(y[0]));
+  muddlib07__nor2_1x nor2_1x_1(.a(net_72), .b(net_38), .y(y[1]));
+  muddlib07__nor2_1x nor2_1x_2(.a(net_74), .b(net_38), .y(y[2]));
+  muddlib07__nor2_1x nor2_1x_3(.a(net_76), .b(net_38), .y(y[3]));
+  muddlib07__nor2_1x nor2_1x_4(.a(net_74), .b(net_46), .y(y[6]));
+  muddlib07__nor2_1x nor2_1x_5(.a(net_76), .b(net_46), .y(y[7]));
+  muddlib07__nor2_1x nor2_1x_6(.a(net_70), .b(net_46), .y(y[4]));
+  muddlib07__nor2_1x nor2_1x_7(.a(net_72), .b(net_46), .y(y[5]));
+  muddlib07__nor2_1x nor2_1x_8(.a(net_70), .b(net_54), .y(y[8]));
+  muddlib07__nor2_1x nor2_1x_9(.a(net_72), .b(net_54), .y(y[9]));
+  muddlib07__nor2_1x nor2_1x_10(.a(net_74), .b(net_54), .y(y[10]));
+  muddlib07__nor2_1x nor2_1x_11(.a(net_76), .b(net_54), .y(y[11]));
+  muddlib07__nor2_1x nor2_1x_12(.a(net_74), .b(net_62), .y(y[14]));
+  muddlib07__nor2_1x nor2_1x_13(.a(net_76), .b(net_62), .y(y[15]));
+  muddlib07__nor2_1x nor2_1x_14(.a(net_70), .b(net_62), .y(y[12]));
+  muddlib07__nor2_1x nor2_1x_15(.a(net_72), .b(net_62), .y(y[13]));
+endmodule   /* vlsi__decoder16_1x */
+
+module muddlib07__buftri_c_1x(d, en, y);
+  input d;
+  input en;
+  output y;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire net_1, net_3, net_54, net_6;
+
+  tranif1 nmos_0(gnd, net_3, net_6);
+  tranif1 nmos_1(net_3, y, en);
+  tranif1 nmos_2(gnd, net_54, en);
+  tranif1 nmos_3(gnd, net_6, d);
+  tranif0 pmos_0(y, net_1, net_54);
+  tranif0 pmos_1(net_1, vdd, net_6);
+  tranif0 pmos_2(net_54, vdd, en);
+  tranif0 pmos_3(net_6, vdd, d);
+endmodule   /* muddlib07__buftri_c_1x */
+
+module vlsi__inv_hi(a, y);
+  input a;
+  output y;
+
+  supply1 vdd;
+  supply0 gnd;
+  tranif1 nmos_0(gnd, y, a);
+  tranif0 pmos_0(y, vdd, a);
+endmodule   /* vlsi__inv_hi */
+
+module muddlib07__srambit(bit_a, bit_b, word);
+  input bit_a;
+  input bit_b;
+  input word;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire net_67, net_68;
+
+  tranif1 nmos_4(gnd, net_67, net_68);
+  tranif1 nmos_5(net_68, gnd, net_67);
+  tranif1 nmos_6(bit_a, net_68, word);
+  tranif1 nmos_7(net_67, bit_b, word);
+  rtranif0 pmos_2(net_67, vdd, net_68);
+  rtranif0 pmos_3(vdd, net_68, net_67);
+endmodule   /* muddlib07__srambit */
+
+module vlsi__sramcol(clk, in, we, wl, out);
+  input clk;
+  input in;
+  input we;
+  input [15:0] wl;
+  output out;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire inv_hi_0_y, net_103, net_115, net_120, net_148, net_149, net_150;
+  wire net_151, net_152, net_153, net_154, net_155, net_2, net_33, net_34;
+  wire net_59, net_64, net_78, net_8, net_83, net_9, net_98;
+
+  tranif1 nmos_0(net_33, net_9, we);
+  tranif1 nmos_1(net_34, net_8, we);
+  tranif1 nmos_2(gnd, net_33, in);
+  tranif1 nmos_3(gnd, net_34, net_2);
+  tranif0 pmos_0(net_8, vdd, clk);
+  tranif0 pmos_1(net_9, vdd, clk);
+  muddlib07__buftri_c_1x buftri_c_0(.d(wl[15]), .en(clk), .y(net_64));
+  muddlib07__buftri_c_1x buftri_c_2(.d(wl[14]), .en(clk), .y(net_59));
+  muddlib07__buftri_c_1x buftri_c_3(.d(wl[13]), .en(clk), .y(net_148));
+  muddlib07__buftri_c_1x buftri_c_4(.d(wl[12]), .en(clk), .y(net_149));
+  muddlib07__buftri_c_1x buftri_c_5(.d(wl[11]), .en(clk), .y(net_83));
+  muddlib07__buftri_c_1x buftri_c_6(.d(wl[10]), .en(clk), .y(net_78));
+  muddlib07__buftri_c_1x buftri_c_7(.d(wl[9]), .en(clk), .y(net_150));
+  muddlib07__buftri_c_1x buftri_c_8(.d(wl[8]), .en(clk), .y(net_151));
+  muddlib07__buftri_c_1x buftri_c_9(.d(wl[4]), .en(clk), .y(net_153));
+  muddlib07__buftri_c_1x buftri_c_10(.d(wl[3]), .en(clk), .y(net_120));
+  muddlib07__buftri_c_1x buftri_c_11(.d(wl[2]), .en(clk), .y(net_115));
+  muddlib07__buftri_c_1x buftri_c_12(.d(wl[1]), .en(clk), .y(net_154));
+  muddlib07__buftri_c_1x buftri_c_13(.d(wl[0]), .en(clk), .y(net_155));
+  muddlib07__buftri_c_1x buftri_c_14(.d(wl[7]), .en(clk), .y(net_103));
+  muddlib07__buftri_c_1x buftri_c_15(.d(wl[6]), .en(clk), .y(net_98));
+  muddlib07__buftri_c_1x buftri_c_16(.d(wl[5]), .en(clk), .y(net_152));
+  muddlib07__inv_1x inv_1x_0(.a(in), .y(net_2));
+  vlsi__inv_hi inv_hi_0(.a(net_9), .y(inv_hi_0_y));
+  vlsi__inv_hi inv_hi_1(.a(net_8), .y(out));
+  muddlib07__srambit srambit_0(.bit_a(net_9), .bit_b(net_8), .word(net_64));
+  muddlib07__srambit srambit_1(.bit_a(net_9), .bit_b(net_8), .word(net_59));
+  muddlib07__srambit srambit_2(.bit_a(net_9), .bit_b(net_8), .word(net_148));
+  muddlib07__srambit srambit_3(.bit_a(net_9), .bit_b(net_8), .word(net_149));
+  muddlib07__srambit srambit_4(.bit_a(net_9), .bit_b(net_8), .word(net_83));
+  muddlib07__srambit srambit_5(.bit_a(net_9), .bit_b(net_8), .word(net_78));
+  muddlib07__srambit srambit_6(.bit_a(net_9), .bit_b(net_8), .word(net_150));
+  muddlib07__srambit srambit_7(.bit_a(net_9), .bit_b(net_8), .word(net_151));
+  muddlib07__srambit srambit_8(.bit_a(net_9), .bit_b(net_8), .word(net_152));
+  muddlib07__srambit srambit_9(.bit_a(net_9), .bit_b(net_8), .word(net_153));
+  muddlib07__srambit srambit_10(.bit_a(net_9), .bit_b(net_8), .word(net_120));
+  muddlib07__srambit srambit_11(.bit_a(net_9), .bit_b(net_8), .word(net_115));
+  muddlib07__srambit srambit_12(.bit_a(net_9), .bit_b(net_8), .word(net_154));
+  muddlib07__srambit srambit_13(.bit_a(net_9), .bit_b(net_8), .word(net_155));
+  muddlib07__srambit srambit_14(.bit_a(net_9), .bit_b(net_8), .word(net_103));
+  muddlib07__srambit srambit_15(.bit_a(net_9), .bit_b(net_8), .word(net_98));
+endmodule   /* vlsi__sramcol */
+
+
+
+module vlsi__sram(clk, data_in, tag_in, we, wl, data_out, tag_out);
+  input clk;
+  input [7:0] data_in;
+  input [3:0] tag_in;
+  input we;
+  input [15:0] wl;
+  output [7:0] data_out;
+  output [3:0] tag_out;
+
+  supply1 vdd;
+  supply0 gnd;
+  vlsi__sramcol sramcol_0(.clk(clk), .in(tag_in[3]), .we(we), .wl(wl[15:0]), 
+      .out(tag_out[3]));
+  vlsi__sramcol sramcol_1(.clk(clk), .in(tag_in[2]), .we(we), .wl(wl[15:0]), 
+      .out(tag_out[2]));
+  vlsi__sramcol sramcol_2(.clk(clk), .in(tag_in[1]), .we(we), .wl(wl[15:0]), 
+      .out(tag_out[1]));
+  vlsi__sramcol sramcol_3(.clk(clk), .in(tag_in[0]), .we(we), .wl(wl[15:0]), 
+      .out(tag_out[0]));
+  vlsi__sramcol sramcol_4(.clk(clk), .in(data_in[7]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[7]));
+  vlsi__sramcol sramcol_5(.clk(clk), .in(data_in[6]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[6]));
+  vlsi__sramcol sramcol_6(.clk(clk), .in(data_in[5]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[5]));
+  vlsi__sramcol sramcol_7(.clk(clk), .in(data_in[4]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[4]));
+  vlsi__sramcol sramcol_8(.clk(clk), .in(data_in[0]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[0]));
+  vlsi__sramcol sramcol_9(.clk(clk), .in(data_in[3]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[3]));
+  vlsi__sramcol sramcol_10(.clk(clk), .in(data_in[2]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[2]));
+  vlsi__sramcol sramcol_11(.clk(clk), .in(data_in[1]), .we(we), .wl(wl[15:0]), 
+      .out(data_out[1]));
+endmodule   /* vlsi__sram */
+
+module cache(address, clk, data_in, we, data_out, hit);
+  input [7:0] address;
+  input clk;
+  input [7:0] data_in;
+  input we;
+  output [7:0] data_out;
+  output hit;
+
+  supply1 vdd;
+  supply0 gnd;
+  wire [15:0] net_4;
+  wire [3:0] net_8;
+
+  //vlsi__comp2_1x_4 comp2_1x_0(.a(address[7:4]), .b(net_8[3:0]), .status(hit));
+  assign hit = (address[7:4]===net_8)?1:0;
+  
+  vlsi__decoder16_1x decoder1_0(.a(address[3:0]), .y(net_4[15:0]));
+  /*vlsi__sram sram_0(.clk(clk), .data_in(data_in[7:0]), .tag_in(address[7:4]), 
+      .we(we), .wl(net_4[15:0]), .data_out(data_out[7:0]), 
+      .tag_out(net_8[3:0]));
+	*/  
+	  sram sram_0(clk, we, net_4, address[7:4], data_in, net_8, data_out);
+	  
+endmodule   /* cache */
