@@ -1448,7 +1448,7 @@ Eyzero|y[7:0]|D5G2;|pin@6||O
 X
 
 # Cell controller;1{ic}
-Ccontroller;1{ic}||artwork|1184714566421|1416587054981|E
+Ccontroller;1{ic}||artwork|1184714566421|1416698273745|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||1.5|-1.5|33|9|||SCHEM_function(D5G1;)Scontroller|trace()V[-16.5/4.5,16.5/4.5,16.5/-4.5,-16.5/-4.5,-16.5/4.5]
 Nschematic:Bus_Pin|pin@0||7|-8|||RRR|
@@ -1487,14 +1487,14 @@ Nschematic:Wire_Pin|pin@41||-12|3||||
 Nschematic:Wire_Pin|pin@44||18|-2||||
 Nschematic:Wire_Pin|pin@45||18|0||||
 Nschematic:Wire_Pin|pin@46||13|-6||||
-Nschematic:Bus_Pin|pin@47||-8|3||||
-Nschematic:Wire_Pin|pin@48||-8|1||||
-Nschematic:Bus_Pin|pin@49||1|3||||
-Nschematic:Wire_Pin|pin@50||1|1||||
-Nschematic:Bus_Pin|pin@51||1|3||||
-Nschematic:Wire_Pin|pin@52||1|1||||
-Nschematic:Bus_Pin|pin@53||1|3||||
-Nschematic:Wire_Pin|pin@54||1|1||||
+Nschematic:Bus_Pin|pin@47||0|5||||
+Nschematic:Wire_Pin|pin@48||0|3||||
+Nschematic:Bus_Pin|pin@49||14|5||||
+Nschematic:Wire_Pin|pin@50||14|3||||
+Nschematic:Bus_Pin|pin@51||10|5||||
+Nschematic:Wire_Pin|pin@52||10|3||||
+Nschematic:Bus_Pin|pin@53||5|5||||
+Nschematic:Wire_Pin|pin@54||5|3||||
 Aschematic:bus|net@0|||IJ900|pin@1||7|-6|pin@0||7|-8
 Aschematic:wire|net@1|||900|pin@3||9|-6|pin@2||9|-8
 Aschematic:bus|net@2|||IJ900|pin@5||11|-6|pin@4||11|-8
@@ -1513,10 +1513,10 @@ Aschematic:wire|net@22|||900|pin@26||-12|5|pin@41||-12|3
 Aschematic:wire|net@25|||0|pin@16||20|-2|pin@44||18|-2
 Aschematic:wire|net@26|||0|pin@12||20|0|pin@45||18|0
 Aschematic:wire|net@27|||2700|pin@34||13|-8|pin@46||13|-6
-Aschematic:wire|net@28|||2700|pin@48||-8|1|pin@47||-8|3
-Aschematic:wire|net@29|||2700|pin@50||1|1|pin@49||1|3
-Aschematic:wire|net@30|||2700|pin@52||1|1|pin@51||1|3
-Aschematic:wire|net@31|||2700|pin@54||1|1|pin@53||1|3
+Aschematic:wire|net@28|||2700|pin@48||0|3|pin@47||0|5
+Aschematic:wire|net@29|||2700|pin@50||14|3|pin@49||14|5
+Aschematic:wire|net@30|||2700|pin@52||10|3|pin@51||10|5
+Aschematic:wire|net@31|||2700|pin@54||5|3|pin@53||5|5
 Ealucontrol[2:0]||D5G2;|pin@0||O
 Ealusrca||D5G2;|pin@2||O
 Ealusrcb[1:0]||D5G2;|pin@4||O

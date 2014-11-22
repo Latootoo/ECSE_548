@@ -677,7 +677,8 @@ Ewe||D5G2;|pin@10||I
 X
 
 # Cell cache;1{sch}
-Ccache;1{sch}||schematic|1416180843171|1416181622048|
+Ccache;1{sch}||schematic|1416180843171|1416699143762|
+Imuddlib07:and2_1x;1{ic}|and2_1x@0||41|6|||D5G4;
 Ngeneric:Facet-Center|art@0||0|0||||AV
 Icache;1{ic}|cache@0||54|19|||D5G4;
 Icomp2_1x_4;1{ic}|comp2_1x@0||30|5|||D5G4;
@@ -696,12 +697,16 @@ NWire_Pin|pin@10||-13|2||||
 NWire_Pin|pin@11||8|5||||
 NWire_Pin|pin@12||8|2||||
 NBus_Pin|pin@13||23|7||||
-NWire_Pin|pin@14||38|5||||
 NBus_Pin|pin@15||27|-1||||
 NBus_Pin|pin@16||45|12||||
 NBus_Pin|pin@17||40|12||||
-NWire_Pin|pin@18||45|9||||
-NWire_Pin|pin@19||40|9||||
+NWire_Pin|pin@18||57|9||||
+NWire_Pin|pin@19||52|9||||
+NWire_Pin|pin@20||19|11||||
+NWire_Pin|pin@21||36|11||||
+NWire_Pin|pin@22||50|6||||
+NWire_Pin|pin@23||6|2||||
+NWire_Pin|pin@24||6|8||||
 Isram;1{ic}|sram@0||17|1|||D5G4;
 Abus|address[3:0]|D5G1;||IJ0|decoder1@0|a[3:0]|-4|-1|pin@6||-7|-1
 Abus|address[7:4]|D5G1;||IJ900|sram@0|tag_in[3:0]|15|-6|pin@4||15|-9
@@ -709,7 +714,7 @@ Abus|address[7:4]|D5G1;||IJ0|comp2_1x@0|a[3:0]|26|7|pin@13||23|7
 Awire|clk|D5G1;||0|sram@0|clk|12|5|pin@11||8|5
 Abus|data_in[7:0]|D5G1;||IJ900|sram@0|in[11:0]|19|-6|pin@5||19|-9
 Abus|data_out[7:0]|D5G1;||IJ1800|sram@0|data_out[7:0]|22|-1|pin@15||27|-1
-Awire|hit|D5G1;||1800|comp2_1x@0|status|34|5|pin@14||38|5
+Awire|hit|D5G1;||1800|and2_1x@0|y|46|6|pin@22||50|6
 Abus|net@0|||IJ1800|pin@0||-20|12|pin@1||-13|12
 Abus|net@1|||IJ1800|pin@2||-20|8|pin@3||-13|8
 Abus|net@4|||IJ1800|decoder1@0|y[15:0]|4|-1|sram@0|wl[15:0]|12|-1
@@ -717,7 +722,14 @@ Awire|net@6|||1800|pin@7||-20|5|pin@8||-13|5
 Awire|net@7|||1800|pin@9||-20|2|pin@10||-13|2
 Abus|net@8|||IJ1800|sram@0|tag_out[3:0]|22|3|comp2_1x@0|b[3:0]|26|3
 Abus|net@11|||IJ0|pin@16||45|12|pin@17||40|12
-Awire|net@12|||0|pin@18||45|9|pin@19||40|9
+Awire|net@12|||0|pin@18||57|9|pin@19||52|9
+Awire|net@13|||0|and2_1x@0|b|36|5|comp2_1x@0|status|34|5
+Awire|net@14|||2700|sram@0|valid_out|19|8|pin@20||19|11
+Awire|net@15|||1800|pin@20||19|11|pin@21||36|11
+Awire|net@16|||900|pin@21||36|11|and2_1x@0|a|36|7
+Awire|net@17|||0|pin@12||8|2|pin@23||6|2
+Awire|net@18|||2700|pin@23||6|2|pin@24||6|8
+Awire|net@19|||1800|pin@24||6|8|sram@0|valid_in|15|8
 Awire|we|D5G1;||0|sram@0|we|12|2|pin@12||8|2
 Eaddress[7:0]||D5G2;|pin@0||I
 Eclk||D5G2;|pin@7||I
@@ -1505,7 +1517,7 @@ Ey||D5G2;|pin@3||O
 X
 
 # Cell sram;1{ic}
-Csram;1{ic}||artwork|1415056890696|1416180340562|E
+Csram;1{ic}||artwork|1415056890696|1416699143762|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||0|0|6|10|||SCHEM_function(D5G2;)Ssram|trace()V[-3/-5,-3/5,3/5,3/-5,-3/-5]
 Nschematic:Bus_Pin|pin@0||-5|4||||
@@ -1522,6 +1534,10 @@ Nschematic:Bus_Pin|pin@12||5|2|||RR|
 Ngeneric:Invisible-Pin|pin@13||3|2|1|1|RR|
 Nschematic:Bus_Pin|pin@14||5|-2|||R|
 Ngeneric:Invisible-Pin|pin@15||3|-2|1|1|R|
+Nschematic:Bus_Pin|pin@16||-2|7|||RRR|
+Nschematic:Wire_Pin|pin@17||-2|5|||RRR|
+Nschematic:Bus_Pin|pin@18||2|7||||
+Nschematic:Wire_Pin|pin@19||2|5||||
 Aschematic:wire|net@0|||0|pin@1||-3|4|pin@0||-5|4
 Aschematic:bus|net@1|||IJ900|pin@3||2|-5|pin@2||2|-7
 Aschematic:wire|net@3|||0|pin@7||-3|1|pin@6||-5|1
@@ -1529,17 +1545,21 @@ Aschematic:bus|net@4|||IJ0|pin@9||-3|-2|pin@8||-5|-2
 Aschematic:bus|net@5|||IJ900|pin@11||-2|-5|pin@10||-2|-7
 Aschematic:bus|net@6|||IJ1800|pin@13||3|2|pin@12||5|2
 Aschematic:bus|net@7|||IJ1800|pin@15||3|-2|pin@14||5|-2
+Aschematic:wire|net@8|||2700|pin@17||-2|5|pin@16||-2|7
+Aschematic:wire|net@9|||2700|pin@19||2|5|pin@18||2|7
 Eclk||D5G2;|pin@0||I
 Ein[11:0]|data_in[7:0]|D5G2;|pin@2||I
 Edata_out[7:0]||D5G2;|pin@14||U
 Etag_in[3:0]||D5G2;|pin@10||U
 Etag_out[3:0]||D5G2;|pin@12||U
+Evalid_in||D5G2;|pin@16||U
+Evalid_out||D5G2;|pin@18||U
 Ewe||D5G2;|pin@6||I
 Ewl[15:0]||D5G2;|pin@8||I
 X
 
 # Cell sram;1{sch}
-Csram;1{sch}||schematic|1415056244408|1416180293128|
+Csram;1{sch}||schematic|1415056244408|1416698866165|
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NWire_Pin|pin@0||-30|25||||
 NWire_Pin|pin@3||143|25||||
@@ -1588,6 +1608,13 @@ NBus_Pin|pin@47||-30|0||||
 NBus_Pin|pin@48||-26|0||||
 NBus_Pin|pin@49||-30|-8||||
 NBus_Pin|pin@50||-26|-8||||
+NWire_Pin|pin@51||-12|25||||
+NWire_Pin|pin@52||-13|-7||||
+NWire_Pin|pin@53||-11|-7||||
+NWire_Pin|pin@54||-31|2||||
+NWire_Pin|pin@55||-26|2||||
+NWire_Pin|pin@56||-31|-13||||
+NWire_Pin|pin@57||-26|-13||||
 Isram;1{ic}|sram@0||164|30|||D5G4;
 Isramcol;1{ic}|sramcol@0||0|7|||D5G4;
 Isramcol;1{ic}|sramcol@1||13|7|||D5G4;
@@ -1601,6 +1628,7 @@ Isramcol;1{ic}|sramcol@8||143|7|||D5G4;
 Isramcol;1{ic}|sramcol@9||104|7|||D5G4;
 Isramcol;1{ic}|sramcol@10||117|7|||D5G4;
 Isramcol;1{ic}|sramcol@11||130|7|||D5G4;
+Isramcol;1{ic}|sramcol@12||-12|7|||D5G4;
 Awire|data_in[0]|D5G1;||900|sramcol@8|in|142|0|pin@34||142|-4
 Awire|data_in[1]|D5G1;||900|sramcol@11|in|129|0|pin@33||129|-4
 Awire|data_in[2]|D5G1;||900|sramcol@10|in|116|0|pin@32||116|-4
@@ -1617,7 +1645,7 @@ Awire|data_out[4]|D5G1;||900|sramcol@7|out|92|0|pin@42||92|-8
 Awire|data_out[5]|D5G1;||900|sramcol@6|out|79|0|pin@41||79|-8
 Awire|data_out[6]|D5G1;||900|sramcol@5|out|66|0|pin@40||66|-8
 Awire|data_out[7]|D5G1;||900|sramcol@4|out|53|0|pin@39||53|-8
-Awire|net@4|||1800|pin@0||-30|25|pin@14||0|25
+Awire|net@4|||1800|pin@0||-30|25|pin@51||-12|25
 Awire|net@5|||900|pin@3||143|25|sramcol@8|clk|143|14
 Awire|net@6|||1800|pin@4||130|25|pin@3||143|25
 Awire|net@7|||2700|sramcol@11|clk|130|14|pin@4||130|25
@@ -1667,9 +1695,14 @@ Abus|net@54|||IJ1800|sramcol@11|wl[15:0]|125|6|sramcol@8|wl[15:0]|138|6
 Abus|net@55|||IJ1800|pin@19||-30|-4|pin@20||-26|-4
 Abus|net@56|||IJ1800|pin@21||-30|-11|pin@22||-26|-11
 Abus|net@64|||IJ1800|pin@17||-30|6|sramcol@0|wl[15:0]|-5|6
-Awire|net@65|||1800|pin@15||-30|9|sramcol@0|we|-5|9
+Awire|net@65|||1800|pin@15||-30|9|sramcol@12|we|-17|9
 Abus|net@66|||IJ1800|pin@47||-30|0|pin@48||-26|0
 Abus|net@67|||IJ1800|pin@49||-30|-8|pin@50||-26|-8
+Awire|net@68|||1800|pin@51||-12|25|pin@14||0|25
+Awire|net@69|||2700|sramcol@12|clk|-12|14|pin@51||-12|25
+Awire|net@70|||1800|sramcol@12|we|-17|9|sramcol@0|we|-5|9
+Awire|net@73|||1800|pin@54||-31|2|pin@55||-26|2
+Awire|net@74|||1800|pin@56||-31|-13|pin@57||-26|-13
 Awire|tag_in[0]|D5G1;||900|sramcol@3|in|38|0|pin@26||38|-4
 Awire|tag_in[1]|D5G1;||900|sramcol@2|in|25|0|pin@25||25|-4
 Awire|tag_in[2]|D5G1;||900|sramcol@1|in|12|0|pin@24||12|-4
@@ -1678,11 +1711,15 @@ Awire|tag_out[0]|D5G1;||900|sramcol@3|out|40|0|pin@38||40|-8
 Awire|tag_out[1]|D5G1;||900|sramcol@2|out|27|0|pin@37||27|-8
 Awire|tag_out[2]|D5G1;||900|sramcol@1|out|14|0|pin@36||14|-8
 Awire|tag_out[3]|D5G1;||900|sramcol@0|out|1|0|pin@35||1|-8
+Awire|valid_in|D5G1;||900|sramcol@12|in|-13|0|pin@52||-13|-7
+Awire|valid_out|D5G1;||900|sramcol@12|out|-11|0|pin@53||-11|-7
 Eclk||D5G2;|pin@0||I
 Ein[11:0]|data_in[7:0]|D5G2;|pin@19||I
 Edata_out[7:0]||D5G2;|pin@21||O
 Etag_in[3:0]||D5G2;|pin@47||I
 Etag_out[3:0]||D5G2;|pin@49||O
+Evalid_in||D5G2;|pin@54||I
+Evalid_out||D5G2;|pin@56||O
 Ewe||D5G2;|pin@15||I
 Ewl[15:0]||D5G2;|pin@17||I
 X
