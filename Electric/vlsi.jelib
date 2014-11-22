@@ -677,7 +677,7 @@ Ewe||D5G2;|pin@10||I
 X
 
 # Cell cache;1{sch}
-Ccache;1{sch}||schematic|1416180843171|1416699143762|
+Ccache;1{sch}||schematic|1416180843171|1416699419901|
 Imuddlib07:and2_1x;1{ic}|and2_1x@0||41|6|||D5G4;
 Ngeneric:Facet-Center|art@0||0|0||||AV
 Icache;1{ic}|cache@0||54|19|||D5G4;
@@ -695,7 +695,6 @@ NWire_Pin|pin@8||-13|5||||
 NWire_Pin|pin@9||-20|2||||
 NWire_Pin|pin@10||-13|2||||
 NWire_Pin|pin@11||8|5||||
-NWire_Pin|pin@12||8|2||||
 NBus_Pin|pin@13||23|7||||
 NBus_Pin|pin@15||27|-1||||
 NBus_Pin|pin@16||45|12||||
@@ -712,25 +711,24 @@ Abus|address[3:0]|D5G1;||IJ0|decoder1@0|a[3:0]|-4|-1|pin@6||-7|-1
 Abus|address[7:4]|D5G1;||IJ900|sram@0|tag_in[3:0]|15|-6|pin@4||15|-9
 Abus|address[7:4]|D5G1;||IJ0|comp2_1x@0|a[3:0]|26|7|pin@13||23|7
 Awire|clk|D5G1;||0|sram@0|clk|12|5|pin@11||8|5
+Awire|clk|D5G1;||1800|pin@7||-20|5|pin@8||-13|5
 Abus|data_in[7:0]|D5G1;||IJ900|sram@0|in[11:0]|19|-6|pin@5||19|-9
 Abus|data_out[7:0]|D5G1;||IJ1800|sram@0|data_out[7:0]|22|-1|pin@15||27|-1
+Awire|hit|D5G1;||0|pin@18||57|9|pin@19||52|9
 Awire|hit|D5G1;||1800|and2_1x@0|y|46|6|pin@22||50|6
 Abus|net@0|||IJ1800|pin@0||-20|12|pin@1||-13|12
 Abus|net@1|||IJ1800|pin@2||-20|8|pin@3||-13|8
 Abus|net@4|||IJ1800|decoder1@0|y[15:0]|4|-1|sram@0|wl[15:0]|12|-1
-Awire|net@6|||1800|pin@7||-20|5|pin@8||-13|5
-Awire|net@7|||1800|pin@9||-20|2|pin@10||-13|2
 Abus|net@8|||IJ1800|sram@0|tag_out[3:0]|22|3|comp2_1x@0|b[3:0]|26|3
 Abus|net@11|||IJ0|pin@16||45|12|pin@17||40|12
-Awire|net@12|||0|pin@18||57|9|pin@19||52|9
 Awire|net@13|||0|and2_1x@0|b|36|5|comp2_1x@0|status|34|5
 Awire|net@14|||2700|sram@0|valid_out|19|8|pin@20||19|11
 Awire|net@15|||1800|pin@20||19|11|pin@21||36|11
 Awire|net@16|||900|pin@21||36|11|and2_1x@0|a|36|7
-Awire|net@17|||0|pin@12||8|2|pin@23||6|2
 Awire|net@18|||2700|pin@23||6|2|pin@24||6|8
 Awire|net@19|||1800|pin@24||6|8|sram@0|valid_in|15|8
-Awire|we|D5G1;||0|sram@0|we|12|2|pin@12||8|2
+Awire|we|D5G1;||1800|pin@9||-20|2|pin@10||-13|2
+Awire|we|D5G1;||1800|pin@23||6|2|sram@0|we|12|2
 Eaddress[7:0]||D5G2;|pin@0||I
 Eclk||D5G2;|pin@7||I
 Edata_in[7:0]||D5G2;|pin@2||I
@@ -1559,7 +1557,7 @@ Ewl[15:0]||D5G2;|pin@8||I
 X
 
 # Cell sram;1{sch}
-Csram;1{sch}||schematic|1415056244408|1416698866165|
+Csram;1{sch}||schematic|1415056244408|1416699358766|
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NWire_Pin|pin@0||-30|25||||
 NWire_Pin|pin@3||143|25||||
@@ -1701,8 +1699,6 @@ Abus|net@67|||IJ1800|pin@49||-30|-8|pin@50||-26|-8
 Awire|net@68|||1800|pin@51||-12|25|pin@14||0|25
 Awire|net@69|||2700|sramcol@12|clk|-12|14|pin@51||-12|25
 Awire|net@70|||1800|sramcol@12|we|-17|9|sramcol@0|we|-5|9
-Awire|net@73|||1800|pin@54||-31|2|pin@55||-26|2
-Awire|net@74|||1800|pin@56||-31|-13|pin@57||-26|-13
 Awire|tag_in[0]|D5G1;||900|sramcol@3|in|38|0|pin@26||38|-4
 Awire|tag_in[1]|D5G1;||900|sramcol@2|in|25|0|pin@25||25|-4
 Awire|tag_in[2]|D5G1;||900|sramcol@1|in|12|0|pin@24||12|-4
@@ -1712,7 +1708,9 @@ Awire|tag_out[1]|D5G1;||900|sramcol@2|out|27|0|pin@37||27|-8
 Awire|tag_out[2]|D5G1;||900|sramcol@1|out|14|0|pin@36||14|-8
 Awire|tag_out[3]|D5G1;||900|sramcol@0|out|1|0|pin@35||1|-8
 Awire|valid_in|D5G1;||900|sramcol@12|in|-13|0|pin@52||-13|-7
+Awire|valid_in|D5G1;||1800|pin@54||-31|2|pin@55||-26|2
 Awire|valid_out|D5G1;||900|sramcol@12|out|-11|0|pin@53||-11|-7
+Awire|valid_out|D5G1;||1800|pin@56||-31|-13|pin@57||-26|-13
 Eclk||D5G2;|pin@0||I
 Ein[11:0]|data_in[7:0]|D5G2;|pin@19||I
 Edata_out[7:0]||D5G2;|pin@21||O
