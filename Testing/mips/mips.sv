@@ -149,7 +149,10 @@ module mips #(parameter WIDTH = 8, REGBITS = 3)
       writedata[5], writedata[6], writedata[7], zero, vdd, gnd);
 				  
 	mux2       #(WIDTH)  cachemux(memdata, writedata, morw, cachedata);	
-	cache idcache(adr, clk, data_in, cachewrite, data_out, hit);
+	
+	//cache0 idcache(clk, we, addr, cachedata, cacheout, hit);
+	cache idcache(adr, clk, cachedata, cachewrite, cacheout, hit);
+
 	mux2       #(WIDTH)  dpmux(memdata, cacheout, morc, dpdata);
 endmodule
 
@@ -474,25 +477,42 @@ module cache0(clk, we, addr, data_in, data_out, hit);
 endmodule
 
 
-module sram(clk, we, wl, tag_in, data_in, tag_out, data_out);
+module sram(clk, we, wl, valid_in, tag_in, data_in, tag_out, data_out, valid_out);
 	input logic clk;
 	input logic we;
+	input logic valid_in;
 	input logic [15:0] wl;
 	input logic [3:0] tag_in;
 	input logic [7:0] data_in;
 	output logic [3:0] tag_out;
 	output logic [7:0] data_out;
+	output logic valid_out;
 
 	// Internal storage element
 	// data
 	logic [7:0] ramD[15:0];
 	// tag
 	logic [3:0] ramT[15:0];
+	// valid
+	logic ramV[15:0];
 	
 	// temp address
 	logic [3:0] addr;
 	
+	integer i;
+	
 	encoder enc(wl, addr);
+	
+	initial
+    begin
+		for(i=0; i<16; i++)
+		begin
+			ramT[i]=0;
+			ramV[i]=0;
+			ramD[i]=0;
+		end
+    end
+	
 	
 	always @ (posedge clk)
 	begin
@@ -501,11 +521,13 @@ module sram(clk, we, wl, tag_in, data_in, tag_out, data_out);
 		begin
 			ramT[addr] <= tag_in;		
 			ramD[addr] <= data_in;
+			ramV[addr] <= 1;
 		end
 	end
 		
 	assign	tag_out = ramT[addr];
 	assign	data_out = ramD[addr];
+	assign 	valid_out = ramV[addr];
 	
 endmodule
 
@@ -581,15 +603,6 @@ module muddlib07__a2o1_1x(a, b, c, y);
   tranif0 pmos_3(y, vdd, net_0);
 endmodule   /* muddlib07__a2o1_1x */
 
-module muddlib07__inv_1x(a, y);
-  input a;
-  output y;
-
-  supply1 vdd;
-  supply0 gnd;
-  tranif1 nmos_0(gnd, y, a);
-  tranif0 pmos_0(y, vdd, a);
-endmodule   /* muddlib07__inv_1x */
 
 module muddlib07__mux4_c_2x(d0, d1, d2, d3, s0, s1, y);
   input d0;
@@ -3646,8 +3659,8 @@ endmodule   /* datapath */
 
 /* Verilog for cell 'cache{sch}' from library 'vlsi' */
 /* Created on Sun Nov 16, 2014 18:34:03 */
-/* Last revised on Sun Nov 16, 2014 18:47:02 */
-/* Written on Fri Nov 21, 2014 14:04:16 by Electric VLSI Design System, version 8.06 */
+/* Last revised on Sat Nov 22, 2014 18:36:59 */
+/* Written on Sat Nov 22, 2014 18:38:24 by Electric VLSI Design System, version 8.06 */
 
 module muddlib07__nor4_1x(a, b, c, d, y);
   input a;
@@ -3851,19 +3864,22 @@ module vlsi__sramcol(clk, in, we, wl, out);
   muddlib07__srambit srambit_15(.bit_a(net_9), .bit_b(net_8), .word(net_98));
 endmodule   /* vlsi__sramcol */
 
-
-
-module vlsi__sram(clk, data_in, tag_in, we, wl, data_out, tag_out);
+module vlsi__sram(clk, data_in, tag_in, valid_in, we, wl, data_out, tag_out, 
+      valid_out);
   input clk;
   input [7:0] data_in;
   input [3:0] tag_in;
+  input valid_in;
   input we;
   input [15:0] wl;
   output [7:0] data_out;
   output [3:0] tag_out;
+  output valid_out;
 
   supply1 vdd;
   supply0 gnd;
+  wire [15:0] sramcol_12_wl;
+
   vlsi__sramcol sramcol_0(.clk(clk), .in(tag_in[3]), .we(we), .wl(wl[15:0]), 
       .out(tag_out[3]));
   vlsi__sramcol sramcol_1(.clk(clk), .in(tag_in[2]), .we(we), .wl(wl[15:0]), 
@@ -3888,6 +3904,8 @@ module vlsi__sram(clk, data_in, tag_in, we, wl, data_out, tag_out);
       .out(data_out[2]));
   vlsi__sramcol sramcol_11(.clk(clk), .in(data_in[1]), .we(we), .wl(wl[15:0]), 
       .out(data_out[1]));
+  vlsi__sramcol sramcol_12(.clk(clk), .in(valid_in), .we(we), 
+      .wl(sramcol_12_wl[15:0]), .out(valid_out));
 endmodule   /* vlsi__sram */
 
 module cache(address, clk, data_in, we, data_out, hit);
@@ -3900,17 +3918,19 @@ module cache(address, clk, data_in, we, data_out, hit);
 
   supply1 vdd;
   supply0 gnd;
+  wire net_13, net_14;
   wire [15:0] net_4;
   wire [3:0] net_8;
 
-  //vlsi__comp2_1x_4 comp2_1x_0(.a(address[7:4]), .b(net_8[3:0]), .status(hit));
-  assign hit = (address[7:4]===net_8)?1:0;
-  
+  muddlib07__and2_1x and2_1x_0(.a(net_14), .b(net_13), .y(hit));
+  vlsi__comp2_1x_4 comp2_1x_0(.a(address[7:4]), .b(net_8[3:0]), 
+      .status(net_13));
   vlsi__decoder16_1x decoder1_0(.a(address[3:0]), .y(net_4[15:0]));
+    
   /*vlsi__sram sram_0(.clk(clk), .data_in(data_in[7:0]), .tag_in(address[7:4]), 
-      .we(we), .wl(net_4[15:0]), .data_out(data_out[7:0]), 
-      .tag_out(net_8[3:0]));
+      .valid_in(we), .we(we), .wl(net_4[15:0]), .data_out(data_out[7:0]), 
+      .tag_out(net_8[3:0]), .valid_out(net_14));
 	*/  
-	  sram sram_0(clk, we, net_4, address[7:4], data_in, net_8, data_out);
-	  
+  sram sram_0(clk, we, net_4, we, address[7:4], data_in, net_8, data_out, net_14);
+ 	  
 endmodule   /* cache */
