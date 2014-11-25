@@ -2090,7 +2090,7 @@ Ewl[15:0]||D5G2;|pin@8||I
 X
 
 # Cell sramcol;1{lay}
-Csramcol;1{lay}||mocmos|1416875004001|1416884621120||ATTR_NCC(D5G1;NT)S["exportsConnectedByParent vdd /vdd_[0-9]+/","exportsConnectedByParent gnd /gnd_[0-9]+/"]|DRC_last_good_drc_bit()I19|DRC_last_good_drc_date()G1416884390172
+Csramcol;1{lay}||mocmos|1416875004001|1416885807706||ATTR_NCC(D5G1;NT)S["exportsConnectedByParent vdd /vdd_[0-9]+/","exportsConnectedByParent gnd /gnd_[0-9]+/"]
 NMetal-1-Metal-2-Con|contact@8||-109.5|2686||||
 NMetal-1-Metal-2-Con|contact@9||-100.5|2686||||
 NMetal-1-N-Active-Con|contact@11||-110|1635||||
@@ -2104,7 +2104,7 @@ NMetal-1-N-Active-Con|contact@19||-100|1643||||
 NMetal-1-Polysilicon-1-Con|contact@20||-120|1581||||
 NMetal-1-Polysilicon-1-Con|contact@22||-86|1582||||
 NMetal-2-Metal-3-Con|contact@23||-87|1582||||
-NMetal-1-Metal-2-Con|contact@24||-87|1582||||
+NMetal-1-Metal-2-Con|contact@24||-86|1582||||
 NMetal-1-Metal-2-Con|contact@25||-109|1582||||
 NMetal-2-Metal-3-Con|contact@27||-109|1582||||
 NMetal-1-P-Active-Con|contact@28||-110|2695||||
