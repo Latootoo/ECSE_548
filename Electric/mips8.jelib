@@ -10,6 +10,8 @@ Vschematic|sch
 
 Lmuddlib07|muddlib07
 
+Lvlsi|vlsi
+
 Lwordlib8|wordlib8
 
 # Technologies:
@@ -1448,7 +1450,7 @@ Eyzero|y[7:0]|D5G2;|pin@6||O
 X
 
 # Cell controller;1{ic}
-Ccontroller;1{ic}||artwork|1184714566421|1416698273745|E
+Ccontroller;1{ic}||artwork|1184714566421|1416704137981|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||1.5|-1.5|33|9|||SCHEM_function(D5G1;)Scontroller|trace()V[-16.5/4.5,16.5/4.5,16.5/-4.5,-16.5/-4.5,-16.5/4.5]
 Nschematic:Bus_Pin|pin@0||7|-8|||RRR|
@@ -21956,125 +21958,41 @@ Ngeneric:Facet-Center|art@0||0|0||||AV
 X
 
 # Cell mips;1{ic}
-Cmips;1{ic}||artwork|1185235392734|1185235392750|E
+Cmips;1{ic}||artwork|1185235392734|1416716868405|E
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NOpened-Thicker-Polygon|art@1||0|0|6|36|||SCHEM_function(D5G1;)Smips|trace()V[-3/-18,-3/18,3/18,3/-18,-3/-18]
-Nschematic:Bus_Pin|pin@0||5|17||||
-Nschematic:Wire_Pin|pin@1||3|17||||
-Nschematic:Bus_Pin|pin@2||5|15||||
-Nschematic:Wire_Pin|pin@3||3|15||||
-Nschematic:Bus_Pin|pin@4||5|13||||
-Nschematic:Wire_Pin|pin@5||3|13||||
-Nschematic:Bus_Pin|pin@6||5|11||||
-Nschematic:Wire_Pin|pin@7||3|11||||
-Nschematic:Bus_Pin|pin@8||5|9||||
-Nschematic:Wire_Pin|pin@9||3|9||||
-Nschematic:Bus_Pin|pin@10||5|7||||
-Nschematic:Wire_Pin|pin@11||3|7||||
-Nschematic:Bus_Pin|pin@12||5|5||||
-Nschematic:Wire_Pin|pin@13||3|5||||
-Nschematic:Bus_Pin|pin@14||5|3||||
-Nschematic:Wire_Pin|pin@15||3|3||||
-Nschematic:Bus_Pin|pin@16||-5|10||||
-Nschematic:Wire_Pin|pin@17||-3|10||||
-Nschematic:Bus_Pin|pin@18||-5|8||||
-Nschematic:Wire_Pin|pin@19||-3|8||||
-Nschematic:Bus_Pin|pin@20||-5|6||||
-Nschematic:Wire_Pin|pin@21||-3|6||||
-Nschematic:Bus_Pin|pin@22||-5|4||||
-Nschematic:Wire_Pin|pin@23||-3|4||||
-Nschematic:Bus_Pin|pin@24||-5|2||||
-Nschematic:Wire_Pin|pin@25||-3|2||||
-Nschematic:Bus_Pin|pin@26||-5|0||||
-Nschematic:Wire_Pin|pin@27||-3|0||||
-Nschematic:Bus_Pin|pin@28||-5|-2||||
-Nschematic:Wire_Pin|pin@29||-3|-2||||
-Nschematic:Bus_Pin|pin@30||-5|-4||||
-Nschematic:Wire_Pin|pin@31||-3|-4||||
 Nschematic:Bus_Pin|pin@32||5|1||||
 Nschematic:Wire_Pin|pin@33||3|1||||
 Nschematic:Bus_Pin|pin@34||5|-1||||
 Nschematic:Wire_Pin|pin@35||3|-1||||
-Nschematic:Bus_Pin|pin@36||-5|-6||||
-Nschematic:Wire_Pin|pin@37||-3|-6||||
-Nschematic:Bus_Pin|pin@38||-5|-8||||
-Nschematic:Wire_Pin|pin@39||-3|-8||||
-Nschematic:Bus_Pin|pin@40||-5|-10||||
-Nschematic:Wire_Pin|pin@41||-3|-10||||
-Nschematic:Bus_Pin|pin@42||5|-3||||
-Nschematic:Wire_Pin|pin@43||3|-3||||
-Nschematic:Bus_Pin|pin@44||5|-5||||
-Nschematic:Wire_Pin|pin@45||3|-5||||
-Nschematic:Bus_Pin|pin@46||5|-7||||
-Nschematic:Wire_Pin|pin@47||3|-7||||
-Nschematic:Bus_Pin|pin@48||5|-9||||
-Nschematic:Wire_Pin|pin@49||3|-9||||
-Nschematic:Bus_Pin|pin@50||5|-11||||
-Nschematic:Wire_Pin|pin@51||3|-11||||
-Nschematic:Bus_Pin|pin@52||5|-13||||
-Nschematic:Wire_Pin|pin@53||3|-13||||
-Nschematic:Bus_Pin|pin@54||5|-15||||
-Nschematic:Wire_Pin|pin@55||3|-15||||
-Nschematic:Bus_Pin|pin@56||5|-17||||
-Nschematic:Wire_Pin|pin@57||3|-17||||
-Aschematic:wire|net@0|||1800|pin@1||3|17|pin@0||5|17
-Aschematic:wire|net@1|||1800|pin@3||3|15|pin@2||5|15
-Aschematic:wire|net@2|||1800|pin@5||3|13|pin@4||5|13
-Aschematic:wire|net@3|||1800|pin@7||3|11|pin@6||5|11
-Aschematic:wire|net@4|||1800|pin@9||3|9|pin@8||5|9
-Aschematic:wire|net@5|||1800|pin@11||3|7|pin@10||5|7
-Aschematic:wire|net@6|||1800|pin@13||3|5|pin@12||5|5
-Aschematic:wire|net@7|||1800|pin@15||3|3|pin@14||5|3
-Aschematic:wire|net@8|||0|pin@17||-3|10|pin@16||-5|10
-Aschematic:wire|net@9|||0|pin@19||-3|8|pin@18||-5|8
-Aschematic:wire|net@10|||0|pin@21||-3|6|pin@20||-5|6
-Aschematic:wire|net@11|||0|pin@23||-3|4|pin@22||-5|4
-Aschematic:wire|net@12|||0|pin@25||-3|2|pin@24||-5|2
-Aschematic:wire|net@13|||0|pin@27||-3|0|pin@26||-5|0
-Aschematic:wire|net@14|||0|pin@29||-3|-2|pin@28||-5|-2
-Aschematic:wire|net@15|||0|pin@31||-3|-4|pin@30||-5|-4
+Nschematic:Bus_Pin|pin@36||-5|5||||
+Nschematic:Wire_Pin|pin@37||-3|5||||
+Nschematic:Bus_Pin|pin@38||-5|1||||
+Nschematic:Wire_Pin|pin@39||-3|1||||
+Nschematic:Bus_Pin|pin@40||-5|-3||||
+Nschematic:Wire_Pin|pin@41||-3|-3||||
+Nschematic:Bus_Pin|pin@64||7|-10||||
+Ngeneric:Invisible-Pin|pin@65||7|-6|1|1||
+Nschematic:Bus_Pin|pin@66||-2|-21||||
+Ngeneric:Invisible-Pin|pin@67||-2|-18|1|1||
+Nschematic:Bus_Pin|pin@68||3|-21||||
+Ngeneric:Invisible-Pin|pin@69||3|-17|1|1||
 Aschematic:wire|net@16|||1800|pin@33||3|1|pin@32||5|1
 Aschematic:wire|net@17|||1800|pin@35||3|-1|pin@34||5|-1
-Aschematic:wire|net@18|||0|pin@37||-3|-6|pin@36||-5|-6
-Aschematic:wire|net@19|||0|pin@39||-3|-8|pin@38||-5|-8
-Aschematic:wire|net@20|||0|pin@41||-3|-10|pin@40||-5|-10
-Aschematic:wire|net@21|||1800|pin@43||3|-3|pin@42||5|-3
-Aschematic:wire|net@22|||1800|pin@45||3|-5|pin@44||5|-5
-Aschematic:wire|net@23|||1800|pin@47||3|-7|pin@46||5|-7
-Aschematic:wire|net@24|||1800|pin@49||3|-9|pin@48||5|-9
-Aschematic:wire|net@25|||1800|pin@51||3|-11|pin@50||5|-11
-Aschematic:wire|net@26|||1800|pin@53||3|-13|pin@52||5|-13
-Aschematic:wire|net@27|||1800|pin@55||3|-15|pin@54||5|-15
-Aschematic:wire|net@28|||1800|pin@57||3|-17|pin@56||5|-17
-Eadr[0]||D5G2;|pin@0||O
-Eadr[1]||D5G2;|pin@2||O
-Eadr[2]||D5G2;|pin@4||O
-Eadr[3]||D5G2;|pin@6||O
-Eadr[4]||D5G2;|pin@8||O
-Eadr[5]||D5G2;|pin@10||O
-Eadr[6]||D5G2;|pin@12||O
-Eadr[7]||D5G2;|pin@14||O
-Ememdata[0]||D5G2;|pin@16||I
-Ememdata[1]||D5G2;|pin@18||I
-Ememdata[2]||D5G2;|pin@20||I
-Ememdata[3]||D5G2;|pin@22||I
-Ememdata[4]||D5G2;|pin@24||I
-Ememdata[5]||D5G2;|pin@26||I
-Ememdata[6]||D5G2;|pin@28||I
-Ememdata[7]||D5G2;|pin@30||I
+Aschematic:wire|net@18|||0|pin@37||-3|5|pin@36||-5|5
+Aschematic:wire|net@19|||0|pin@39||-3|1|pin@38||-5|1
+Aschematic:wire|net@20|||0|pin@41||-3|-3|pin@40||-5|-3
+Aschematic:bus|net@32|||IJ900|pin@65||7|-6|pin@64||7|-10
+Aschematic:bus|net@33|||IJ900|pin@67||-2|-18|pin@66||-2|-21
+Aschematic:bus|net@34|||IJ900|pin@69||3|-17|pin@68||3|-21
+Eadr[7:0]||D5G2;|pin@64||U
+Ememdata[7:0]||D5G2;|pin@68||U
 Ememread||D5G2;|pin@32||O
 Ememwrite||D5G2;|pin@34||O
 Eph1||D5G2;|pin@36||I
 Eph2||D5G2;|pin@38||I
 Ereset||D5G2;|pin@40||I
-Ewritedata[0]||D5G2;|pin@42||O
-Ewritedata[1]||D5G2;|pin@44||O
-Ewritedata[2]||D5G2;|pin@46||O
-Ewritedata[3]||D5G2;|pin@48||O
-Ewritedata[4]||D5G2;|pin@50||O
-Ewritedata[5]||D5G2;|pin@52||O
-Ewritedata[6]||D5G2;|pin@54||O
-Ewritedata[7]||D5G2;|pin@56||O
+Ewritedata[7:0]||D5G2;|pin@66||U
 X
 
 # Cell mips;1{lay}
@@ -22162,147 +22080,99 @@ Ewritedata[7]||D5G2;|datapath@0|writedata[7]|O
 X
 
 # Cell mips;1{sch}
-Cmips;1{sch}||schematic|1184714937078|1185236293453|
+Cmips;1{sch}||schematic|1184714937078|1416716862176|
 Ngeneric:Facet-Center|art@0||0|0||||AV
-Icontroller;1{ic}|controll@0||26|19|||D5G4;
-Idatapath;1{ic}|datapath@0||3|-24|||D5G4;
-Imips;1{ic}|mips@0||69|30|||D5G4;
-NBus_Pin|pin@0||43|-1||||
-NWire_Pin|pin@15||16|27||||
-NWire_Pin|pin@16||14|27||||
-NWire_Pin|pin@17||12|27||||
-NBus_Pin|pin@22||1|-14||||
+Ivlsi:cache;1{ic}|cache@0||85|20|||D5G4;
+Icontroller;1{ic}|controll@0||19|19|||D5G4;
+Idatapath;1{ic}|datapath@0||-4|-24|||D5G4;
+Imips;1{ic}|mips@0||110|34|||D5G4;
+Iwordlib8:mux2_1x_8;1{ic}|mux2_1x_@0||67|15|||D5G4;
+Iwordlib8:mux2_1x_8;1{ic}|mux2_1x_@1||49|-27|X||D5G4;
+NBus_Pin|pin@0||36|-1||||
+NWire_Pin|pin@15||9|27||||
+NWire_Pin|pin@16||7|27||||
+NWire_Pin|pin@17||5|27||||
 NWire_Pin|pin@25||47|19||||
 NWire_Pin|pin@26||47|17||||
-NBus_Pin|pin@28||43|8||||
-NWire_Pin|pin@33||50|0||||
-NWire_Pin|pin@34||59|0||||
-NWire_Pin|pin@35||50|-1||||
-NWire_Pin|pin@36||59|-1||||
-NWire_Pin|pin@37||50|-2||||
-NWire_Pin|pin@38||59|-2||||
-NWire_Pin|pin@39||50|-3||||
-NWire_Pin|pin@40||59|-3||||
-NWire_Pin|pin@41||50|-4||||
-NWire_Pin|pin@42||59|-4||||
-NWire_Pin|pin@43||50|-5||||
-NWire_Pin|pin@44||59|-5||||
-NWire_Pin|pin@45||50|-6||||
-NWire_Pin|pin@46||59|-6||||
-NWire_Pin|pin@47||50|-7||||
-NWire_Pin|pin@48||59|-7||||
-NWire_Pin|pin@49||50|9||||
-NWire_Pin|pin@50||59|9||||
-NWire_Pin|pin@53||50|7||||
-NWire_Pin|pin@54||59|7||||
-NWire_Pin|pin@55||50|6||||
-NWire_Pin|pin@56||59|6||||
-NWire_Pin|pin@57||50|5||||
-NWire_Pin|pin@58||59|5||||
-NWire_Pin|pin@59||50|4||||
-NWire_Pin|pin@60||59|4||||
-NWire_Pin|pin@61||50|3||||
-NWire_Pin|pin@62||59|3||||
-NWire_Pin|pin@63||50|2||||
-NWire_Pin|pin@64||59|2||||
-NWire_Pin|pin@65||-4|-1||||
-NWire_Pin|pin@66||5|-1||||
-NWire_Pin|pin@67||-4|-2||||
-NWire_Pin|pin@68||5|-2||||
-NWire_Pin|pin@69||-4|-3||||
-NWire_Pin|pin@70||5|-3||||
-NWire_Pin|pin@71||-4|-4||||
-NWire_Pin|pin@72||5|-4||||
-NWire_Pin|pin@73||-4|-5||||
-NWire_Pin|pin@74||5|-5||||
-NWire_Pin|pin@75||-4|-6||||
-NWire_Pin|pin@76||5|-6||||
-NWire_Pin|pin@77||-4|-7||||
-NWire_Pin|pin@78||5|-7||||
-NWire_Pin|pin@79||-4|-8||||
-NWire_Pin|pin@80||5|-8||||
-NWire_Pin|pin@81||50|8||||
-NWire_Pin|pin@82||59|8||||
+NBus_Pin|pin@28||36|8||||
 NBus_Pin|pin@83||54|-13||||
 NBus_Pin|pin@84||54|-15||||
-Awire|adr[0]|D5G1;||1800|pin@33||50|0|pin@34||59|0
-Awire|adr[1]|D5G1;||1800|pin@35||50|-1|pin@36||59|-1
-Awire|adr[2]|D5G1;||1800|pin@37||50|-2|pin@38||59|-2
-Awire|adr[3]|D5G1;||1800|pin@39||50|-3|pin@40||59|-3
-Awire|adr[4]|D5G1;||1800|pin@41||50|-4|pin@42||59|-4
-Awire|adr[5]|D5G1;||1800|pin@43||50|-5|pin@44||59|-5
-Awire|adr[6]|D5G1;||1800|pin@45||50|-6|pin@46||59|-6
-Abus|adr[7:0]|D5G1;||IJ1800|datapath@0|adr[7:0]|48|-13|pin@83||54|-13
-Awire|adr[7]|D5G1;||1800|pin@47||50|-7|pin@48||59|-7
-Abus|alucontrol[2:0]|D5FLeave alone;G1;R||IJ2700|datapath@0|alucontrol[2:0]|33|-7|controll@0|alucontrol[2:0]|33|11
-Awire|alusrca|D5FLeave alone;G1;R||900|controll@0|alusrca|35|11|datapath@0|alusrca|35|-7
-Abus|alusrcb[1:0]|D5FLeave alone;G1;R||IJ900|controll@0|alusrcb[1:0]|37|11|datapath@0|alusrcb[1:0]|37|-7
-Abus|funct[3:0]|D5G1;R||IJ900|controll@0|funct[3:0]|43|11|pin@28||43|8
-Abus|funct[5:0]|D5FLeave alone;G1;R||IJ2700|datapath@0|funct[5:0]|43|-7|pin@0||43|-1
-Awire|iord|D5FLeave alone;G1;R||900|controll@0|iord|21|11|datapath@0|iord|21|-7
-Abus|irwrite[3:0]|D5G1;R||IJ2700|datapath@0|irwrite[3:0]|31|-7|controll@0|irwrite[3:0]|31|11
-Awire|memdata[0]|D5G1;||1800|pin@65||-4|-1|pin@66||5|-1
-Awire|memdata[1]|D5G1;||1800|pin@67||-4|-2|pin@68||5|-2
-Awire|memdata[2]|D5G1;||1800|pin@69||-4|-3|pin@70||5|-3
-Awire|memdata[3]|D5G1;||1800|pin@71||-4|-4|pin@72||5|-4
-Awire|memdata[4]|D5G1;||1800|pin@73||-4|-5|pin@74||5|-5
-Awire|memdata[5]|D5G1;||1800|pin@75||-4|-6|pin@76||5|-6
-Awire|memdata[6]|D5G1;||1800|pin@77||-4|-7|pin@78||5|-7
-Abus|memdata[7:0]|D5G1;||IJ0|datapath@0|memdata[7:0]|8|-14|pin@22||1|-14
-Awire|memdata[7]|D5G1;||1800|pin@79||-4|-8|pin@80||5|-8
-Awire|memtoreg|D5FLeave alone;G1;R||900|controll@0|memtoreg|23|11|datapath@0|memtoreg|23|-7
-Awire|net@27|||900|controll@0|reset|16|24|datapath@0|reset|16|-7
-Awire|net@28|||900|controll@0|ph2|14|24|datapath@0|ph2|14|-7
-Awire|net@29|||900|controll@0|ph1|12|24|datapath@0|ph1|12|-7
-Awire|net@30|||2700|controll@0|reset|16|24|pin@15||16|27
-Awire|net@31|||2700|controll@0|ph2|14|24|pin@16||14|27
-Awire|net@32|||2700|controll@0|ph1|12|24|pin@17||12|27
-Awire|net@41|||1800|controll@0|memread|46|19|pin@25||47|19
-Awire|net@42|||1800|controll@0|memwrite|46|17|pin@26||47|17
-Abus|op[5:0]|D5FLeave alone;G1;R||IJ900|controll@0|op[5:0]|41|11|datapath@0|op[5:0]|41|-7
-Awire|pcen|D5FLeave alone;G1;R||900|controll@0|pcen|27|11|datapath@0|pcen|27|-7
-Abus|pcsrc[1:0]|D5G1;R||IJ2700|datapath@0|pcsrc[1:0]|29|-7|controll@0|pcsrc[1:0]|29|11
-Awire|regdst|D5FLeave alone;G1;R||900|controll@0|regdst|19|11|datapath@0|regdst|19|-7
-Awire|regwrite|D5FLeave alone;G1;R||900|controll@0|regwrite|25|11|datapath@0|regwrite|25|-7
-Awire|writedata[0]|D5G1;||1800|pin@49||50|9|pin@50||59|9
-Awire|writedata[1]|D5G1;||1800|pin@81||50|8|pin@82||59|8
-Awire|writedata[2]|D5G1;||1800|pin@53||50|7|pin@54||59|7
-Awire|writedata[3]|D5G1;||1800|pin@55||50|6|pin@56||59|6
-Awire|writedata[4]|D5G1;||1800|pin@57||50|5|pin@58||59|5
-Awire|writedata[5]|D5G1;||1800|pin@59||50|4|pin@60||59|4
-Awire|writedata[6]|D5G1;||1800|pin@61||50|3|pin@62||59|3
-Abus|writedata[7:0]|D5G1;||IJ1800|datapath@0|writedata[7:0]|48|-15|pin@84||54|-15
-Awire|writedata[7]|D5G1;||1800|pin@63||50|2|pin@64||59|2
-Awire|zero|D5FLeave alone;G1;R||2700|datapath@0|zero|39|-7|controll@0|zero|39|11
-Eadr[7:0]|adr[0]|D5G2;|pin@34||O
-Eadr[1]||D5G2;|pin@36||O
-Eadr[2]||D5G2;|pin@38||O
-Eadr[3]||D5G2;|pin@40||O
-Eadr[4]||D5G2;|pin@42||O
-Eadr[5]||D5G2;|pin@44||O
-Eadr[6]||D5G2;|pin@46||O
-Eadr[7]||D5G2;|pin@48||O
-Ememdata[0]||D5G2;|pin@65||I
-Ememdata[1]||D5G2;|pin@67||I
-Ememdata[2]||D5G2;|pin@69||I
-Ememdata[3]||D5G2;|pin@71||I
-Ememdata[4]||D5G2;|pin@73||I
-Ememdata[5]||D5G2;|pin@75||I
-Ememdata[6]||D5G2;|pin@77||I
-Ememdata[7]||D5G2;|pin@79||I
+NWire_Pin|pin@99||19|34||||
+NWire_Pin|pin@100||91|34||||
+NWire_Pin|pin@101||91|19||||
+NWire_Pin|pin@102||24|28||||
+NWire_Pin|pin@103||74|28||||
+NWire_Pin|pin@104||74|17||||
+NBus_Pin|pin@106||80|15||||
+NWire_Pin|pin@107||80|24||||
+NWire_Pin|pin@108||33|26||||
+NWire_Pin|pin@109||67|26||||
+NBus_Pin|pin@110||73|23||||
+NBus_Pin|pin@114||1|-27||||
+NBus_Pin|pin@115||58|17||||
+NBus_Pin|pin@116||58|13||||
+NWire_Pin|pin@117||29|27||||
+NWire_Pin|pin@118||49|27||||
+NBus_Pin|pin@119||90|-29||||
+NBus_Pin|pin@121||71|-25||||
+Abus|adr[7:0]|D5G1;||IJ1800|datapath@0|adr[7:0]|41|-13|pin@83||54|-13
+Abus|adr[7:0]|D5G1;||IJ0|cache@0|address[7:0]|80|23|pin@110||73|23
+Abus|alucontrol[2:0]|D5FLeave alone;G1;R||IJ2700|datapath@0|alucontrol[2:0]|26|-7|controll@0|alucontrol[2:0]|26|11
+Awire|alusrca|D5FLeave alone;G1;R||900|controll@0|alusrca|28|11|datapath@0|alusrca|28|-7
+Abus|alusrcb[1:0]|D5FLeave alone;G1;R||IJ900|controll@0|alusrcb[1:0]|30|11|datapath@0|alusrcb[1:0]|30|-7
+Abus|funct[3:0]|D5G1;R||IJ900|controll@0|funct[3:0]|36|11|pin@28||36|8
+Abus|funct[5:0]|D5FLeave alone;G1;R||IJ2700|datapath@0|funct[5:0]|36|-7|pin@0||36|-1
+Awire|iord|D5FLeave alone;G1;R||900|controll@0|iord|14|11|datapath@0|iord|14|-7
+Abus|irwrite[3:0]|D5G1;R||IJ900|controll@0|irwrite[3:0]|24|11|datapath@0|irwrite[3:0]|24|-7
+Abus|memdata[7:0]|D5G1;||IJ0|mux2_1x_@0|d0[31:0]|63|17|pin@115||58|17
+Awire|memtoreg|D5FLeave alone;G1;R||900|controll@0|memtoreg|16|11|datapath@0|memtoreg|16|-7
+Awire|net@27|||900|controll@0|reset|9|24|datapath@0|reset|9|-7
+Awire|net@28|||900|controll@0|ph2|7|24|datapath@0|ph2|7|-7
+Awire|net@29|||900|controll@0|ph1|5|24|datapath@0|ph1|5|-7
+Awire|net@30|||2700|controll@0|reset|9|24|pin@15||9|27
+Awire|net@31|||2700|controll@0|ph2|7|24|pin@16||7|27
+Awire|net@32|||2700|controll@0|ph1|5|24|pin@17||5|27
+Awire|net@41|||1800|controll@0|memread|39|19|pin@25||47|19
+Awire|net@42|||1800|controll@0|memwrite|39|17|pin@26||47|17
+Awire|net@64|||2700|controll@0|hit|19|24|pin@99||19|34
+Awire|net@65|||1800|pin@99||19|34|pin@100||91|34
+Awire|net@66|||900|pin@100||91|34|pin@101||91|19
+Awire|net@67|||0|pin@101||91|19|cache@0|hit|90|19
+Awire|net@68|||2700|controll@0|cachewrite|24|24|pin@102||24|28
+Awire|net@69|||1800|pin@102||24|28|pin@103||74|28
+Awire|net@70|||900|pin@103||74|28|pin@104||74|17
+Awire|net@71|||1800|pin@104||74|17|cache@0|we|80|17
+Abus|net@74|||IJ1800|mux2_1x_@0|y[31:0]|71|15|pin@106||80|15
+Abus|net@75|||IJ2700|pin@106||80|15|cache@0|data_in[7:0]|80|21
+Awire|net@76|||2700|cache@0|clk|80|19|pin@107||80|24
+Awire|net@77|||0|pin@107||80|24|controll@0|ph1|5|24
+Awire|net@78|||2700|controll@0|morw|33|24|pin@108||33|26
+Awire|net@79|||1800|pin@108||33|26|pin@109||67|26
+Awire|net@80|||900|pin@109||67|26|mux2_1x_@0|s|67|21.5
+Abus|net@82|||IJ0|mux2_1x_@1|y[31:0]|45|-27|pin@114||1|-27
+Abus|net@83|||IJ2700|pin@114||1|-27|datapath@0|memdata[7:0]|1|-14
+Awire|net@86|||2700|controll@0|morc|29|24|pin@117||29|27
+Awire|net@87|||1800|pin@117||29|27|pin@118||49|27
+Awire|net@88|||900|pin@118||49|27|mux2_1x_@1|s|49|-20.5
+Abus|net@89|||IJ1800|mux2_1x_@1|d1[31:0]|53|-29|pin@119||90|-29
+Abus|net@90|||IJ2700|pin@119||90|-29|cache@0|data_out[7:0]|90|21
+Abus|net@92|||IJ1800|mux2_1x_@1|d0[31:0]|53|-25|pin@121||71|-25
+Abus|op[5:0]|D5FLeave alone;G1;R||IJ900|controll@0|op[5:0]|34|11|datapath@0|op[5:0]|34|-7
+Awire|pcen|D5FLeave alone;G1;R||2700|datapath@0|pcen|20|-7|controll@0|pcen|20|11
+Abus|pcsrc[1:0]|D5G1;R||IJ900|controll@0|pcsrc[1:0]|22|11|datapath@0|pcsrc[1:0]|22|-7
+Awire|regdst|D5FLeave alone;G1;R||2700|datapath@0|regdst|12|-7|controll@0|regdst|12|11
+Awire|regwrite|D5FLeave alone;G1;R||2700|datapath@0|regwrite|18|-7|controll@0|regwrite|18|11
+Abus|writedata[7:0]|D5G1;||IJ1800|datapath@0|writedata[7:0]|41|-15|pin@84||54|-15
+Abus|writedata[7:0]|D5G1;||IJ0|mux2_1x_@0|d1[31:0]|63|13|pin@116||58|13
+Awire|zero|D5FLeave alone;G1;R||2700|datapath@0|zero|32|-7|controll@0|zero|32|11
+Eadr[7:0]||D5G2;|pin@83||O
+Ememdata[7:0]||D5G2;|pin@121||I
 Ememread||D5G2;|pin@25||O
 Ememwrite||D5G2;|pin@26||O
 Eph1||D5G2;|pin@17||I
 Eph2||D5G2;|pin@16||I
 Ereset||D5G2;|pin@15||I
-Ewritedata[0]||D5G2;|pin@50||O
-Ewritedata[1]||D5G2;|pin@82||O
-Ewritedata[2]||D5G2;|pin@54||O
-Ewritedata[3]||D5G2;|pin@56||O
-Ewritedata[4]||D5G2;|pin@58||O
-Ewritedata[5]||D5G2;|pin@60||O
-Ewritedata[6]||D5G2;|pin@62||O
-Ewritedata[7]||D5G2;|pin@64||O
+Ewritedata[7:0]||D5G2;|pin@84||O
 X
 
 # Cell regram0;1{ic}
