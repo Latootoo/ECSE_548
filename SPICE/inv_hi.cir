@@ -1,0 +1,31 @@
+*** SPICE deck for cell inv_hi{lay} from library vlsi
+*** Created on 星期一 十一月 24, 2014 19:20:02
+*** Last revised on 星期四 十一月 27, 2014 00:09:22
+*** Written on 星期四 十一月 27, 2014 00:46:49 by Electric VLSI Design System, 
+*version 8.06
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.MODEL N NMOS LEVEL=1
++KP=60E-6 VTO=0.7 GAMMA=0.3 LAMBDA=0.05 PHI=0.6
++LD=0.4E-6 TOX=40E-9 CGSO=2.0E-10 CGDO=2.0E-10 CJ=2.0E-04
+.MODEL P PMOS LEVEL=1
++KP=20E-6 VTO=0.7 GAMMA=0.4 LAMBDA=0.05 PHI=0.6
++LD=0.6E-6 TOX=40E-9 CGSO=3.0E-10 CGDO=3.0E-10 CJ=2.0E-04
+.MODEL DIFFCAP D CJO=2.0E-04
+
+*** TOP LEVEL CELL: inv_hi{lay}
+Mnmos_1 y a 0 0 N L=0.6U W=1.2U AS=4.68P AD=3.15P PS=15U PD=7.2U
+Mpmos_1 y a vdd vdd P L=0.6U W=3U AS=7.38P AD=3.15P PS=18.6U PD=7.2U
+
+Vdd vdd 0 DC 1.06
+Va a 0 PULSE(0 1.06 1u 20u 20u 980u 2m)
+*Va a 0 3.3
+Ra a 0 1k
+*Ra a 0 1k
+Cy y 0 1p
+*Ry y 0 1
+
+.TRAN 1u 5m 0 10u
+.PROBE
+
+.END

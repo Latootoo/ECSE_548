@@ -1,0 +1,27 @@
+*** SPICE deck for cell inv_1x{sch} from library muddlib07
+*** Created on ÐÇÆÚÈý Ê®ÔÂ 11, 2006 19:45:21
+*** Last revised on ÐÇÆÚÒ» ÈýÔÂ 12, 2007 05:28:50
+*** Written on ÐÇÆÚÁù Ê®Ò»ÔÂ 22, 2014 20:33:10 by Electric VLSI Design System, 
+*version 8.06
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.MODEL N NMOS LEVEL=1
++KP=60E-6 VTO=0.7 GAMMA=0.3 LAMBDA=0.05 PHI=0.6
++LD=0.4E-6 TOX=40E-9 CGSO=2.0E-10 CGDO=2.0E-10 CJ=2.0E-04
+.MODEL P PMOS LEVEL=1
++KP=20E-6 VTO=0.7 GAMMA=0.4 LAMBDA=0.05 PHI=0.6
++LD=0.6E-6 TOX=40E-9 CGSO=3.0E-10 CGDO=3.0E-10 CJ=2.0E-04
+.MODEL DIFFCAP D CJO=2.0E-04
+
+*** TOP LEVEL CELL: muddlib07:inv_1x{sch}
+Mnmos_0 y a 0 0 N L=0.6U W=2.1U
+Mpmos_0 vdd a y vdd P L=0.6U W=3U
+
+Vdd vdd 0 DC 3.3
+Va a 0 PULSE(0 3.3 1u 20u 20u 480u 1m)
+Cy y 0 1p
+
+.TRAN 1u 5m 0 10u
+.PROBE
+
+.END
