@@ -600,12 +600,19 @@ memory. For data write access, we still use one state.
 
 \section{Testing}\label{testing}
 In this section, we explain our testing methodology. We tested components
-individually at architecture level in Section \ref{subsec:comp_test}. After assembly, the SystemVerilog MIPS
+individually in Section \ref{subsec:comp_test}. After assembly, the SystemVerilog MIPS
 processor is simulated for functional testing in Section \ref{subsec:func_test}.
 
 \subsection{Components Testing}\label{subsec:comp_test}
+The main components to be tested are shown below:
+\begin{itemize}
+\item Comparator
+\item Decoder
+\item SRAM
 
-\subsection{Functional Testing}\label{func_test}
+\end{itemize}
+
+\subsection{Functional Testing}\label{subsec:func_test}
 
 \section{Design Quality}\label{quality}
 
