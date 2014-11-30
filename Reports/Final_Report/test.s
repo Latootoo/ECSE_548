@@ -16,7 +16,7 @@ around:	slt $6, $7, $2		# $6 <= 3 < 5 = 1
 loop:	beq $3, $0, end		# taken if $3 = 0	
 		sub $3, $3, $6      # $3 = $3 - 1       
 		j loop              # taken             
-		j end               # not taken         
+		lb $7, 0($0)    	# not taken         
 end:	sb $7, 71($2)       # write adr 76 <=7  
 		.dw	3                                   
 		.dw 5                                   
