@@ -559,10 +559,11 @@ Figure \ref{fig:fsm}. This is implemented in SystemVerilog and the functional si
 been verified successfully before going down to schematic level. The overall
 MIPS microarchitecture is shown in Figure~\ref{fig:arch}.
 
-\begin{figure}[h!]\label{fig:arch}
+\begin{figure}[h!]
   \centering
     \includegraphics[width=0.4\textwidth]{arch.pdf}
   \caption{MIPS Microarchiture}
+  \label{fig:arch}
 \end{figure}
 
 
@@ -608,7 +609,8 @@ The main components to be tested are shown below:
 \begin{itemize}
 \item Comparator
 \item Decoder
-\item SRAM
+\item SRAM: this is the storage elements in cache.
+\item Cache:
 
 \end{itemize}
 
