@@ -345,35 +345,35 @@
 
 
 % correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
+%\hyphenation{op-tical net-works semi-conduc-tor}
 
 
 \begin{document}
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Bare Demo of IEEEtran.cls for Conferences}
+\title{ECSE 548 (VLSI) Project: MIPS Processor On-Chip Cache Design and Integration}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
-\and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-Springfield, USA\\
-Email: homer@thesimpsons.com}
-\and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678-2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
+%\author{\IEEEauthorblockN{Michael Shell}
+%\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
+%Georgia Institute of Technology\\
+%Atlanta, Georgia 30332--0250\\
+%Email: http://www.michaelshell.org/contact.html}
+%\and
+%\IEEEauthorblockN{Homer Simpson}
+%\IEEEauthorblockA{Twentieth Century Fox\\
+%Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\and
+%\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
+%\IEEEauthorblockA{Starfleet Academy\\
+%San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212\\
+%Fax: (888) 555--1212}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -412,7 +412,14 @@ Fax: (888) 555--1212}}
 
 \begin{abstract}
 %\boldmath
-The abstract goes here.
+In this paper, we present an on-chip cache design and integration for 8-bit MIPS
+processor. The cache that we adopt is a direct-mapped cache with 1 byte cache
+blocks. It has a size of 16 bytes and is used for both instructions and data. We
+apply a top-down design methodology, i.e. we start from the architecture level
+and go down to its layout, with testings on each level. To integrate the cache,
+	MIPS Finite State Machine (FSM) is modified accordingly, which results in
+	controller architecture modifications. Assembly code is also rewritten to verify
+	cache functionality. Design quality is tested using SPICE.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -440,16 +447,13 @@ The abstract goes here.
 
 \section{Introduction}
 % no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill January 11, 2007
+
+%\hfill mds
+% 
+%\hfill January 11, 2007
 
 \subsection{Subsection Heading Here}
 Subsection text here.
@@ -542,8 +546,21 @@ Subsubsection text here.
 % command of the stfloats package.
 
 
+\section{Design Methodology}\label{meth}
 
-\section{Conclusion}
+
+\section{Microarchitecture}\label{arch}
+
+
+\section{Testing}\label{testing}
+
+\subsection{Components Testing}
+
+\subsection{Functional Testing}\label{func_test}
+
+\section{Design Quality}\label{quality}
+
+\section{Conclusion}\label{conclusion}
 The conclusion goes here.
 
 
@@ -553,10 +570,10 @@ The conclusion goes here.
 
 
 % use section* for acknowledgement
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
+%\section*{Acknowledgment}
+%
+%
+%The authors would like to thank...
 
 
 
