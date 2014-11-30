@@ -1,11 +1,10 @@
-*** SPICE deck for cell inv_1x{sch} from library muddlib07
-*** Created on 星期三 十月 11, 2006 19:45:21
+*** SPICE deck for cell and2_1x{sch} from library muddlib07
+*** Created on 星期四 一月 25, 2007 11:45:29
 *** Last revised on 星期一 三月 12, 2007 05:28:50
-*** Written on 星期五 十一月 28, 2014 00:49:21 by Electric VLSI Design System, 
+*** Written on 星期四 十一月 27, 2014 23:29:29 by Electric VLSI Design System, 
 *version 8.06
 *** Layout tech: mocmos, foundry MOSIS
 *** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
-* Note that ITL5=0 sets ITL5 to infinity
 .MODEL N NMOS LEVEL=2 LD=0.3943U TOX=502E-10
 +NSUB=1.22416E+16 VTO=0.756 KP=4.224E-05 GAMMA=0.9241
 +PHI=0.6 UO=623.661 UEXP=8.328627E-02 UCRIT=54015.0
@@ -22,17 +21,19 @@
 +CJ=1.319E-04 MJ=0.4125 CJSW=3.421E-10 MJSW=0.198 PB=0.66
 .TEMP 25.0
 
-*** TOP LEVEL CELL: muddlib07:inv_1x{sch}
-Mnmos_0 y a 0 0 N L=1.2U W=4.2U
-Mpmos_0 y a vdd vdd P L=1.2U W=6U
+*** TOP LEVEL CELL: muddlib07:and2_1x{sch}
+Mnmos_0 net_2 b net_1 0 N L=1.2U W=3.6U
+Mnmos_1 net_1 a 0 0 N L=1.2U W=3.6U
+Mnmos_2 y net_2 0 0 N L=1.2U W=4.2U
+Mpmos_0 vdd b net_2 vdd P L=1.2U W=3.6U
+Mpmos_1 vdd a net_2 vdd P L=1.2U W=3.6U
+Mpmos_2 vdd net_2 y vdd P L=1.2U W=6U
 
 Vdd vdd 0 DC 5
-Va a 0 PULSE(0 5 1u 100u 100u 400u 1m)
-*Va a 0 5
-*Ra a 0 1k
-*Ra a 0 1k
-*Cy y 0 1p
-*Ry y 0 100k
+*Va a 0 DC 5
+Va a 0 PULSE(0 5 1u 20u 20u 480u 1m)
+Vb b 0 DC 5
+*Rb b 0 1k
 
 .TRAN 1u 5m 0 1u
 .PROBE

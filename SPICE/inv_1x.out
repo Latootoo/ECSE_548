@@ -1,0 +1,182 @@
+
+**** 11/29/14 19:10:16 ****** PSpice Lite (October 2012) ****** ID# 10813 ****
+
+ *** SPICE deck for cell inv_1x{sch} from library muddlib07
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+*** Created on 星期三 十月 11, 2006 19:45:21
+*** Last revised on 星期一 三月 12, 2007 05:28:50
+*** Written on 星期五 十一月 28, 2014 00:49:21 by Electric VLSI Design System, 
+*version 8.06
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+* Note that ITL5=0 sets ITL5 to infinity
+.MODEL N NMOS LEVEL=2 LD=0.3943U TOX=502E-10
++NSUB=1.22416E+16 VTO=0.756 KP=4.224E-05 GAMMA=0.9241
++PHI=0.6 UO=623.661 UEXP=8.328627E-02 UCRIT=54015.0
++DELTA=5.218409E-03 VMAX=50072.2 XJ=0.4U LAMBDA=2.975321E-02
++NFS=4.909947E+12 NEFF=1.001E-02 NSS=0.0 TPG=1.0
++RSH=20.37 CGDO=3.1E-10 CGSO=3.1E-10
++CJ=3.205E-04 MJ=0.4579 CJSW=4.62E-10 MJSW=0.2955 PB=0.7
+.MODEL P PMOS LEVEL=2 LD=0.2875U TOX=502E-10
++NSUB=1.715148E+15 VTO=-0.7045 KP=1.686E-05 GAMMA=0.3459
++PHI=0.6 UO=248.933 UEXP=1.02652 UCRIT=182055.0
++DELTA=1.0E-06 VMAX=100000.0 XJ=0.4U LAMBDA=1.25919E-02
++NFS=1.0E+12 NEFF=1.001E-02 NSS=0.0 TPG=-1.0
++RSH=79.10 CGDO=2.89E-10 CGSO=2.89E-10
++CJ=1.319E-04 MJ=0.4125 CJSW=3.421E-10 MJSW=0.198 PB=0.66
+.TEMP 25.0
+
+*** TOP LEVEL CELL: muddlib07:inv_1x{sch}
+Mnmos_0 y a 0 0 N L=1.2U W=4.2U
+Mpmos_0 y a vdd vdd P L=1.2U W=6U
+
+Vdd vdd 0 DC 5
+Va a 0 PULSE(0 5 1u 100u 100u 400u 1m)
+*Va a 0 5
+*Ra a 0 1k
+*Ra a 0 1k
+*Cy y 0 1p
+*Ry y 0 100k
+
+.TRAN 1u 5m 0 1u
+.PROBE
+
+.END
+
+**** 11/29/14 19:10:16 ****** PSpice Lite (October 2012) ****** ID# 10813 ****
+
+ *** SPICE deck for cell inv_1x{sch} from library muddlib07
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               N               P               
+               NMOS            PMOS            
+       LEVEL    2               2            
+         TPG                   -1            
+           L  100.000000E-06  100.000000E-06 
+           W  100.000000E-06  100.000000E-06 
+          LD  394.300000E-09  287.500000E-09 
+         VTO     .756           -.7045       
+          KP   42.240000E-06   16.860000E-06 
+       GAMMA     .9241           .3459       
+         PHI     .6              .6          
+      LAMBDA     .029753         .012592     
+         RSH   20.37           79.1          
+          IS   10.000000E-15   10.000000E-15 
+          JS    0               0            
+          PB     .7              .66         
+        PBSW     .7              .66         
+          CJ  320.500000E-06  131.900000E-06 
+        CJSW  462.000000E-12  342.100000E-12 
+          MJ     .4579           .4125       
+        MJSW     .2955           .198        
+        CGSO  310.000000E-12  289.000000E-12 
+        CGDO  310.000000E-12  289.000000E-12 
+        CGBO    0               0            
+        NSUB   12.241600E+15    1.715148E+15 
+         NSS    0               0            
+         NFS    4.909947E+12    1.000000E+12 
+         TOX   50.200000E-09   50.200000E-09 
+          XJ  400.000000E-09  400.000000E-09 
+          UO  623.661         248.933        
+       UCRIT   54.015000E+03  182.055000E+03 
+        UEXP     .083286        1.02652      
+        VMAX   50.072200E+03  100.000000E+03 
+        NEFF     .01001          .01001      
+       DELTA    5.218409E-03    1.000000E-06 
+      DIOMOD    1               1            
+         VFB    0               0            
+        LETA    0               0            
+        WETA    0               0            
+          U0    0               0            
+        TEMP    0               0            
+         VDD    5               5            
+       XPART    0               0            
+
+
+**** 11/29/14 19:10:16 ****** PSpice Lite (October 2012) ****** ID# 10813 ****
+
+ *** SPICE deck for cell inv_1x{sch} from library muddlib07
+
+
+ ****     TEMPERATURE-ADJUSTED VALUES      TEMPERATURE =   25.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+ **** MOSFET MODEL PARAMETERS
+
+                      N              P       
+
+        VTO        7.606E-01     -7.080E-01  
+        PHI        6.045E-01      6.045E-01  
+         PB        7.038E-01      6.641E-01  
+     IS(JS)        7.335E-15      7.335E-15  
+         KP        4.267E-05      1.703E-05  
+         UO        6.299E+02      2.514E+02  
+
+
+**** 11/29/14 19:10:16 ****** PSpice Lite (October 2012) ****** ID# 10813 ****
+
+ *** SPICE deck for cell inv_1x{sch} from library muddlib07
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   25.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    a)    0.0000  (    y)    4.9900  (  vdd)    5.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    Vdd         -4.430E-06
+    Va           0.000E+00
+
+    TOTAL POWER DISSIPATION   2.22E-05  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 11/29/14 19:10:16 ****** PSpice Lite (October 2012) ****** ID# 10813 ****
+
+ *** SPICE deck for cell inv_1x{sch} from library muddlib07
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .03
+
