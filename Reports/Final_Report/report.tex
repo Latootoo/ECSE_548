@@ -446,6 +446,16 @@ and go down to its layout, with testings on each level. To integrate the cache,
 
 
 \section{Introduction}
+
+Cache is a small memory is used to speed-up the processor-memory operation. A cache  contains the most recently accessed pieces of
+main memory. The question arises why we need this high speed memory?. The time for processor to fetch a data from main memory is very long or worst for the disk.So, we need some thing in between memory and processor to speed up the whole process of data fetching, instruction fetching, read and write process.For example, a memory used in Pentium its access time is typical is 60ns for main memory (DRAM). \cite{intel}. It means 100 MHz
+processor can execute most instructions in 1 CLK or 10 ns. Its a bottleneck of this processor. Cache memory helps by reducing the time it takes to read/write information
+to and from the processor. A typical access time for SRAM is 15 ns \cite{intel}. Therefore cache memory
+allows small portions of main memory to be accessed three to four times faster than main memory
+But,How can this small piece of memory decrease the access time. In theory this concept called \textbf{Locality of Reference}. It means at any given
+time the processor access only a  memory in a small or localized region of a memory. The
+cache loads this region allowing the processor to access the memory region faster. 
+So question arises, why not replace main memory with cache. The reason for not replacing memory with cache is cost of cache because for cache cell we need six transistor to store one bit. Cache memory (SRAM) is several times more expense than main memory (DRAM). The power consumption of SRAM is also higher than DRAM.
 % no \IEEEPARstart
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
@@ -549,7 +559,7 @@ Subsubsection text here.
 \section{Design Methodology}\label{meth}
 
 
-\section{Microarchitecture}\label{arch}
+\section{Microrchitecture}\label{arch}
 
 
 \section{Testing}\label{testing}
@@ -557,11 +567,13 @@ Subsubsection text here.
 \subsection{Components Testing}
 
 \subsection{Functional Testing}\label{func_test}
+\subsection{Functional Testing}\label{func_test}
 
 \section{Design Quality}\label{quality}
 
 \section{Conclusion}\label{conclusion}
-The conclusion goes here.
+
+
 
 
 
@@ -603,9 +615,9 @@ The conclusion goes here.
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{intel}http://download.intel.com/design/intarch/papers/cache6.pdf
+The conclusion goes here.
+
 
 \end{thebibliography}
 
