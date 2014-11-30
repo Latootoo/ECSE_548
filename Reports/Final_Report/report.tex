@@ -624,7 +624,7 @@ cache hit, it is set to 1 and the data from cache is sent to MIPS. Otherwise it
 is set to 0 and memory data is used.
 
 \item\textit{hit} is used to show status of cache. 1 represents a cache hit and
-0 represents a cache miss.
+0 represents a cache miss. A compulsory miss strategy was implemented for an ensured miss for a first-time read from cache.
 \end{itemize}
 
 In Figure \ref{fig:fsm}, we split one state for data read
@@ -635,6 +635,79 @@ main memory.
 We adopt write-through policy, so the data is always written to both cache and
 memory. For data write access, we still use one state.
 
+\section{Implementaion}\label{implementation}
+This section discusses the implementation process of cache components and integration in Electric.
+\subsection{Comparator}\label{subsec:comparator}
+A 4-bit comparator was implemented to compare the \textit{tag} bits from the memory and cache to generate corresponding \textit{cache hit} signals. The designed schematic and layout can be found in Figure \ref{fig:comparator}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.25\textwidth]{comparator_sch} \includegraphics[scale=0.25]{comparator_layout}
+  \caption{The Schematic and Layout of Comparator Design}
+  \label{fig:comparator}
+\end{figure}
+
+Figure \ref{fig:comparator_check} indicates that the comparator design was valid, passing all three design rule checks.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.4\textwidth]{comparator_check}
+  \caption{Deisgn Rule Checks for Comparator}
+  \label{fig:comparator_check}
+\end{figure}
+
+\subsection{4-to-16 Row Decoder}\label{subsec:decoder}
+In order for the cache to make use of the 4-bit set signals, a row decoder was applied to decode the set signal and select 1 out of 16 8-bit data lines lying inside the cache. In order to reduce the delay and space usage of the decoder, \textit{pre-decoding} technology was used, resulting in a design shown in Figure \ref{fig:decoder}. It was worth noting that the layout of the decoder was delibrately designed to be wide with a minimum height in order to pitch-match with the sram array inside the cache.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.25\textwidth]{decoder_sch} \includegraphics[scale=0.25]{decoder_lay}
+  \caption{The Schematic and Layout of Decoder Design}
+  \label{fig:decoder}
+\end{figure}
+
+It can be shown from the Figure \ref{fig:decoder_check} that the decoder design passed all three design rule checks and was ready for the integration into the cache deisgn.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{decoder_check}
+  \caption{Deisgn Rule Checks for Decoder}
+  \label{fig:decoder_check}
+\end{figure}
+
+\subsection{SRAM Column}\label{subsec:sram_col}
+An SRAM column represents a column of SRAM bits inside the SRAM array of the cache, consisting of 16 SRAM bits sharing bit and inverting bit lines. The design was presented in Figure \ref{fig:sram_col}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{sram_col_sch} \includegraphics[scale=0.4]{sram_col_lay}
+  \caption{The Schematic and Layout of SRAM Column}
+  \label{fig:sram_col}
+\end{figure}
+
+The design rule check results can be found in Figure \ref{fig:sram_col_check}. The current design level of SRAM column did not pass NCC for unmatched number of \textit{gnd} wire between schematic and layout, an error originated from SRAM bit standard cell. This error was appropriately ignored, as the issue will be resolved in cache level when all components share common \textit{vdd} and \textit{gnd} tracks.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{sram_col_check}
+  \caption{Deisgn Rule Checks for SRAM Column}
+  \label{fig:sram_col_check}
+\end{figure}
+
+\subsection{SRAM Array}\label{subsec:sram}
+The SRAM array is the most essential part of the cache, consisting of 16 \textit{13-bit} SRAM bit rows, with each row having 1 bit for validation (compulsory miss), 4 bits for tag line and 8 bits for data storage. Each row also has a wordline buffer for a stable charging-up. The design is presented in Figure \ref{fig:sram}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.4\textwidth]{sram_sch} \includegraphics[scale=0.3]{sram_lay}
+  \caption{The Schematic and Layout of SRAM Array}
+  \label{fig:sram}
+\end{figure}
+
+Similar to Section \ref{subsec:sram_col}, the SRAM array was not able to pass NCC for the same reason; similarly the error was ignored at this level as well. The DRC and ERC check results can be found in Figure \ref{fig:sram_check}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.25\textwidth]{sram_check}
+  \caption{Deisgn Rule Checks for SRAM Array}
+  \label{fig:sram_check}
+\end{figure}
 
 \section{Testing}\label{testing}
 In this section, we explain our testing methodology. We tested components
