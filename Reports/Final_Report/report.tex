@@ -456,6 +456,8 @@ But,How can this small piece of memory decrease the access time. In theory this 
 time the processor access only a  memory in a small or localized region of a memory. The
 cache loads this region allowing the processor to access the memory region faster. 
 So question arises, why not replace main memory with cache. The reason for not replacing memory with cache is cost of cache because for cache cell we need six transistor to store one bit. Cache memory (SRAM) is several times more expense than main memory (DRAM). The power consumption of SRAM is also higher than DRAM.
+
+%
 % no \IEEEPARstart
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
@@ -464,14 +466,6 @@ So question arises, why not replace main memory with cache. The reason for not r
 %\hfill mds
 % 
 %\hfill January 11, 2007
-
-\subsection{Subsection Heading Here}
-Subsection text here.
-
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
-
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -555,25 +549,62 @@ Subsubsection text here.
 % footnotes above bottom floats. This can be corrected via the \fnbelowfloat
 % command of the stfloats package.
 
+\section{Architecture}\label{arch}
+We adopt hierarchical top-down design methodology. We go through architecture
+level, schematic level and layout level. At architecture level, the Finite
+State Machine (FSM) is modified and the controller is changed accordingly, see
+Figure \ref{fig:fsm}. This is implemented in SystemVerilog and the functional simulation has
+been verified successfully before going down to schematic level. 
 
-\section{Design Methodology}\label{meth}
+Since our cache is used for both instructions and data, in following sections,
+	  when we say data, we refer to both instructions and data unless specified
+	  otherwise. 
 
+Three output signals (\textit{cachewrite, morw, morc}) and one input signal
+(\textit{hit}) are added to the controller. 
 
-\section{Microrchitecture}\label{arch}
+\begin{itemize}
+\item\textit{cachewrite} is used to
+enable write/read access to the cache with a value of 1/0. 
+
+\item\textit{morw} is used
+to select data from memory or datapath. If a cache miss happens, it is set
+to 0 and the data from memory is written into the cache. 
+
+\item\textit{morc} is used to select data from memory or from cache. If there is a
+cache hit, it is set to 1 and the data from cache is sent to MIPS. Otherwise it
+is set to 0 and memory data is used.
+
+\item\textit{hit} is used to show status of cache. 1 represents a cache hit and
+0 represents a cache miss.
+\end{itemize}
+
+In Figure \ref{fig:fsm}, we split one state for data read
+access into two states. The first state is used to see if there is a cache hit.
+If so, at second state, data from cache is read; otherwise data is fetched from
+main memory. 
+
+We adopt write-through policy, so the data is always written to both cache and
+memory. For data write access, we still use one state.
 
 
 \section{Testing}\label{testing}
+In this section, we explain our testing methodology. We tested components
+individually at architecture level in Section \ref{subsec:comp_test}. After assembly, the SystemVerilog MIPS
+processor is simulated for functional testing in Section \ref{subsec:func_test}.
 
-\subsection{Components Testing}
+\subsection{Components Testing}\label{subsec:comp_test}
 
-\subsection{Functional Testing}\label{func_test}
 \subsection{Functional Testing}\label{func_test}
 
 \section{Design Quality}\label{quality}
 
 \section{Conclusion}\label{conclusion}
 
-
+The Cache implementation can be mould in a number of ways, in terms of associativity which can decrease access time but increase complexity so in engineering world need to live with this trade-off. But basic working principal remains same.As discussed earlier we have successfully implemented the direct mapped cache and successful integration with MIPS.
+cross severa the initially defined boundaries. It is important to understand that the
+Pentium(R) Processor uses only one method to implement cache. We have successfully tested the all components their simulation verification done in ModelSim, Schematic and layout implementation and testing done in Electric. We also employed Spice simulation.In short Cache is simply a high speed memory that stores a piece of main memory which helps processor for high performance
+he conclusion goes here.
 
 
 
