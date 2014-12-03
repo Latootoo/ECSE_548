@@ -611,6 +611,13 @@ MIPS microarchitecture is shown in Figure~\ref{fig:arch}.
 
 \begin{figure}[h!]
   \centering
+    \includegraphics[width=0.55\textwidth]{fsm}
+  \caption{Modified FSM of Controller}
+  \label{fig:fsm}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
     \includegraphics[width=0.4\textwidth]{arch.pdf}
   \caption{MIPS Microarchiture}
   \label{fig:arch}
@@ -761,15 +768,41 @@ In this section, the functional testing of MIPS SystemVerilog model is
 demonstrated. For this purpose, assembly code is written, as shown in Listing
 \ref{lst:asm}.
 
-\lstinputlisting[caption=Assembly code, label=lst:asm]{test.s}
+\lstinputlisting[caption=Assembly Code, label=lst:asm]{test.s}
+At the beginning, instructions are fetched, and there are compulsory cache misses. The assembly code contains a loop to test cache hits. When dealing with this loop, there are cache hits. In Figure \ref{fig:cache_miss}, we can see that there is a cache miss. This happens because the instructions are used for the first time here. During program execution, cache hits occur for the loop. This is illustrated in Figure \ref{fig:cache_hit}. The instructions in the loop are put in the cache and then fetched soon. As a result, cache hits happen here.
+
+Apart from cache read access, we also checked cache write access, as shown in Figure \ref{fig:cache_write}. In this case, signal \textit{morw} is set to 1 to select data and \textit{cachewrite} is set to 1 to write the data from datapath into cache.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_miss.png}
+  \caption{Cache Read Miss}
+  \label{fig:cache_miss}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_hit.png}
+  \caption{Cache Read Hit}
+  \label{fig:cache_hit}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_write.png}
+  \caption{Cache Write}
+  \label{fig:cache_write}
+\end{figure}
+
+The result is shown in Figure \ref{fig:cache_write}. If cache is absent, the write address \textit{adr} is 76 and write data \textit{writedata} is 7. After we integrated on-chip cache, the result is still correct. Our cache functionality is thus verified.
 
 \section{Design Quality}\label{quality}
-
+ 
 % power: and=> 1.89E-05  WATTS
 %        inv=> 2.22E-05  WATTS
 %		 hi-inv=>  1.27E-05  WATTS
-
-
+ 
+ 
 In this section, performances of certain components, such as regular inverter, high-skew inverter as well as and gate, are evaluated using CAD tool(i.e.PSPICE) since we are not capable to perform evaluations directly on integrated circuits blocks due to the circuit size limitation from CAD tool. The corresponding results are shown in \textbf{Fig.\ref{fig:Spice}} for the setup time analysis of each component respectively. As can be seen clearly from the output waveform, the high-skew inverter pulls up faster than the regular inverter as expected. As for the power dissipation, the corresponding total power consumption of a and gate, inverter and high-skew inverter are $18.9\mu W$, $22.2\mu W$ and $12.7\mu W$, respectively. Therefore, skewed logic is clearly one of the high performance and low power-carry logic components available currently.
 
 \begin{figure}[h!]
