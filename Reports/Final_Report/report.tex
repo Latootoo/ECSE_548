@@ -740,25 +740,14 @@ processor is simulated for functional testing in Section \ref{subsec:func_test}.
 \subsection{Components Testing}\label{subsec:comp_test}
 The main components to be tested are shown below:
 \begin{itemize}
-\item Comparator \\
-
-The comparator was tested in ModelSim with 7 test cases; Figure \ref{fig:comp_test} indicates that the comparator was able to operate correctly, passing all test cases.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.25\textwidth]{comp_test}
-  \caption{ModelSim Test Results for Comparator}
-  \label{fig:comp_test}
-\end{figure}
-
-\item Decoder \\
-
+\item Comparator
+\item Decoder
 The 4-to-16 decoder was tested in ModelSim with all 16 test cases; the results showing that the design was operating properly is presented in Figure \ref{fig:decoder_test}.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.3\textwidth]{decoder_test}
-  \caption{ModelSim Test Results for Decoder}
+  \caption{ModelSim Test Results for decoder}
   \label{fig:decoder_test}
 \end{figure}
  
@@ -772,22 +761,22 @@ In this section, the functional testing of MIPS SystemVerilog model is
 demonstrated. For this purpose, assembly code is written, as shown in Listing
 \ref{lst:asm}.
 
-\lstinputlisting[caption=Assembly code, label=lst:asm]{test.s}
+\lstinputlisting[caption=Assembly Code, label=lst:asm]{test.s}
 At the beginning, instructions are fetched, and there are compulsory cache misses. The assembly code contains a loop to test cache hits. When dealing with this loop, there are cache hits. In Figure \ref{fig:cache_miss}, we can see that there is a cache miss. This happens because the instructions are used for the first time here. During program execution, cache hits occur for the loop. This is illustrated in Figure \ref{fig:cache_hit}. The instructions in the loop are put in the cache and then fetched soon. As a result, cache hits happen here.
 
-Apart from cache read access, we also checked cache write access, as shown in Figure \ref{fig:cache_write}. In this case, signal \textit{morw} is set to 1 to select data and \textit{cachewrite} is set to 1 to write it into cache.
+Apart from cache read access, we also checked cache write access, as shown in Figure \ref{fig:cache_write}. In this case, signal \textit{morw} is set to 1 to select data and \textit{cachewrite} is set to 1 to write the data from datapath into cache.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.3\textwidth]{cache_miss.png}
-  \caption{Cache Miss}
+  \caption{Cache Read Miss}
   \label{fig:cache_miss}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.3\textwidth]{cache_hit.png}
-  \caption{Cache Hit}
+  \caption{Cache Read Hit}
   \label{fig:cache_hit}
 \end{figure}
 
@@ -797,6 +786,8 @@ Apart from cache read access, we also checked cache write access, as shown in Fi
   \caption{Cache Write}
   \label{fig:cache_write}
 \end{figure}
+
+The result is shown in Figure \ref{fig:cache_write}. If cache is absent, the write address \textit{adr} is 76 and write data \textit{writedata} is 7. After we integrated on-chip cache, the result is still correct. Our cache functionality is thus verified.
 
 \section{Design Quality}\label{quality}
 
