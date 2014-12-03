@@ -752,8 +752,35 @@ The 4-to-16 decoder was tested in ModelSim with all 16 test cases; the results s
   \label{fig:decoder_test}
 \end{figure}
  
-\item SRAM: this is the storage elements in cache.
-\item Cache: 
+\item SRAM: \\
+
+This is the storage elements in cache. As shown in Figure \ref{fig:cache_arch}, it has 16 sets and each set consists of 1 \textit{valid} bit, 4 \textit{tag} bits and 8 \textit{data} bits. The input signal \textit{we} is set to 0/1 for data read/write and the signal \textit{wl} is used to select the set for access. Initially, the \textit{valid} bit is 0. Once a cache set is written, its corresponding \textit{valid} becomes 1. \textit{valid} is used to indicate if the data has been loaded or not. We produce some random inputs for testing. Due to the complexity of memory accesses, we generate test vectors from the inputs using our \textit{Python} script, as shown in Figure \ref{fig:sram_test}. The signal representation is listed in Table \ref{table:sram}. The functionality of SRAM is verified successfully according to test vectors.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{sram_test.png}
+  \caption{SRAM Test Vectors}
+  \label{fig:sram_test}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\caption{SRAM Test Vector}
+\label{table:sram}
+\begin{tabular}{c|c}
+  \hline
+  \textbf{bit position} & \textbf{signal}\\  
+  \hline
+  0 & we\\
+  16:1 & wl \\
+  24:17 & data\_in\\
+  28:25 & tag\_in\\
+  36:29 & expected\_data\\
+  40:37 & expected\_tag\\
+  41 & expected\_valid\\
+  \hline
+\end{tabular}
+\end{table}
 
 \end{itemize}
 
