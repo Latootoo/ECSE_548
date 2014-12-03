@@ -2,8 +2,8 @@ module testbench_decoder();
     logic clk;
     logic [3:0] a;
     logic [15:0] y, expected;
-    logic [19:0] vectors[4:0], currentvec;
-    logic [3:0] vectornum, errors;
+    logic [19:0] vectors[16:0], currentvec;
+    logic [16:0] vectornum, errors;
 
     // device under test
     decoder16_1x dut(a, y);
@@ -30,6 +30,7 @@ module testbench_decoder();
     // check errors
     always @(negedge clk) begin
       expected = currentvec[15:0];
+      $display("Input: %b, Ouput: %b, Expected: %b", a, y, expected);
         if (y !== expected) begin
             $display("       output mismatches as %h (%h expected)", 
                         expected, y);

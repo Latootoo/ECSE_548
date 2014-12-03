@@ -700,6 +700,25 @@ After the implementation of all circuit components, the cache was built based on
 \subsection{PLA Controller \& Controller}\label{subsec:controller}
 As indicated in Section \ref{arch}, with updated FSM for the controller, the PLA controller which represents the FSM logic has been modified accordingly. With an updated FSM description file, a new PLA controller was generated and re-integrated into the controller citcuit of MIPS processor. New exports corresponding to cache signals have been added to the controller circtui as well. The resulting circuit is presented in the next sub-section.
 
+\subsection{Integration}\label{subsec:integration}
+Upon the completion and tests of each component, the cache was then integrated with MIPS processor (with updated controller component), resulting in a circuit presented in Figure \ref{fig:mips}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{mips_sch} \includegraphics[scale=0.3]{mips_lay}
+  \caption{The Schematic and Layout of MIPS integrated with Cache}
+  \label{fig:mips}
+\end{figure}
+
+The pad frame was then generated from the new MIPS processor with cache implemented. To contain the much-expanded size of the MIPS, the size of the pad frame was extended from \textit{40} pads to \textit{64} pads. The resulting chip, along with error-free design rule check results, is shown in Figure \ref{fig:chip}. Due to page limits, a truncated version of design rule checks for the chip is presented in this report; the full check has been presented during the demo with the professor.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.2\textwidth]{chip_sch} \includegraphics[scale=0.25]{chip_lay} \includegraphics[width=0.3\textwidth]{chip_check}
+  \caption{The Schematic and Layout of Chip Integration With Design Rule Check Results}
+  \label{fig:chip}
+\end{figure}
+
 \section{Testing}\label{testing}
 In this section, we explain our testing methodology. We tested components
 individually in Section \ref{subsec:comp_test}. After assembly, the SystemVerilog MIPS
@@ -710,6 +729,15 @@ The main components to be tested are shown below:
 \begin{itemize}
 \item Comparator
 \item Decoder
+The 4-to-16 decoder was tested in ModelSim with all 16 test cases; the results showing that the design was operating properly is presented in Figure \ref{fig:decoder_test}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{decoder_test}
+  \caption{ModelSim Test Results for decoder}
+  \label{fig:decoder_test}
+\end{figure}
+ 
 \item SRAM: this is the storage elements in cache.
 \item Cache: 
 
