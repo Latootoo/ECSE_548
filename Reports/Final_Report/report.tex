@@ -68,6 +68,7 @@
 \usepackage{graphicx}
 \usepackage{listings} % needed for the inclusion of source code
 \usepackage{mips}
+\usepackage[margin=0.5in]{geometry}
 
 % the following is needed for syntax highlighting
 \usepackage{color}
@@ -588,7 +589,19 @@ So question arises, why not replace main memory with cache. The reason for not r
 % footnotes above bottom floats. This can be corrected via the \fnbelowfloat
 % command of the stfloats package.
 
-\section{Architecture}\label{arch}
+\section{Cache Architecture}\label{cache_arch}
+The MIPS processor presented in the course takes an 8-bit address line and 8-bit data line every time it reads data from external memory; to maintain a manageable project scale while ensuring basic functioanlity of the cache, the cache was designed to split up the address line into a 4-bit tag line and a 4-bit set line, where set signals are used for row selection in cache whereas tag signals are used for comparison to generate cache hits. The designed configuration results in a 16 8-bit data row in cache, making it capable of storing 16 bytes (4 distinctive assembly instructions) for MIPS.
+
+The resulting design of the cache is shown in Figure \ref{fig:cache_arch}. Set signals are used to decode data rows inside SRAM arrays, and tag signals are used to compare the tags stored in cache to generate cache hit signals. Wite enable (\textit{we} as shown in figure) signal ensures the cache is writeable whenever it set to high. Additionally, for better stability, a validation bit (\textit{v}) was added to each row of SRAM array inside the cache to implement \textit{Compulsory Miss Strategy}, where the first read from cache is always guaranteed to generate a cache miss signal.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.45\textwidth]{cache_arch}
+  \caption{Cache Microarchiture}
+  \label{fig:cache_arch}
+\end{figure}
+
+\section{MIPS Integration Architecture}\label{arch}
 We adopt hierarchical top-down design methodology. We go through architecture
 level, schematic level and layout level. At architecture level, the Finite
 State Machine (FSM) is modified and the controller is changed accordingly, see
@@ -670,7 +683,7 @@ An SRAM column represents a column of SRAM bits inside the SRAM array of the cac
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.15\textwidth]{sram_col_sch} \includegraphics[scale=0.4]{sram_col_lay} \includegraphics[width=0.3\textwidth]{sram_col_check}
+    \includegraphics[width=0.15\textwidth]{sram_col_sch} \includegraphics[scale=0.3]{sram_col_lay} \includegraphics[width=0.3\textwidth]{sram_col_check}
   \caption{The Schematic and Layout of SRAM Column With Design Rule Check Results}
   \label{fig:sram_col}
 \end{figure}
