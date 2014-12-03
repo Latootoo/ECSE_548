@@ -487,15 +487,9 @@ and go down to its layout, with testings on each level. To integrate the cache,
 
 \section{Introduction}
 
-Cache is a small memory is used to speed-up the processor-memory operation. A cache  contains the most recently accessed pieces of
-main memory. The question arises why we need this high speed memory?. The time for processor to fetch a data from main memory is very long or worst for the disk.So, we need some thing in between memory and processor to speed up the whole process of data fetching, instruction fetching, read and write process.For example, a memory used in Pentium its access time is typical is 60ns for main memory (DRAM). \cite{intel}. It means 100 MHz
-processor can execute most instructions in 1 CLK or 10 ns. Its a bottleneck of this processor. Cache memory helps by reducing the time it takes to read/write information
-to and from the processor. A typical access time for SRAM is 15 ns \cite{intel}. Therefore cache memory
-allows small portions of main memory to be accessed three to four times faster than main memory
-But,How can this small piece of memory decrease the access time. In theory this concept called \textbf{Locality of Reference}. It means at any given
-time the processor access only a  memory in a small or localized region of a memory. The
-cache loads this region allowing the processor to access the memory region faster. 
-So question arises, why not replace main memory with cache. The reason for not replacing memory with cache is cost of cache because for cache cell we need six transistor to store one bit. Cache memory (SRAM) is several times more expense than main memory (DRAM). The power consumption of SRAM is also higher than DRAM.
+Cache is a small memory that  contains the most recently accessed pieces of main memory, used to speed-up the processor-memory operation. Due to \textbf{Locality of Reference}, where a process at any given time accesses only a small region of memory, a cache helps significantly reduce processor I/O overhead by loading the small region that can be accessed by the processor with a much faster rate. For example, the typicall memory access time of 60 ns of a Pentium processor can be reduced to 15 ns with the presence of a cache \cite{intel}.
+
+In this report, we propose a design for a simple direct-mapped cache for MIPS processor using SRAM memory bits. The report is divided into seven sections. Section \ref{cache_arch} and Section \ref{arch} provides detailed descriptions of propsed design for cache architecture and modifications on the existing MIPS processor for the integration between the two parts; then Section \ref{implementation} presents the process of implementing the design. In Sections \ref{testing} and \ref{quality}, both functional and performance testing on the design is discussed. Section \ref{conclusion} concludes the design process along with the whole report.
 
 %
 % no \IEEEPARstart
