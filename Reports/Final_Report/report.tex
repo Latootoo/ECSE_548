@@ -762,6 +762,30 @@ demonstrated. For this purpose, assembly code is written, as shown in Listing
 \ref{lst:asm}.
 
 \lstinputlisting[caption=Assembly code, label=lst:asm]{test.s}
+At the beginning, instructions are fetched, and there are compulsory cache misses. The assembly code contains a loop to test cache hits. When dealing with this loop, there are cache hits. In Figure \ref{fig:cache_miss}, we can see that there is a cache miss. This happens because the instructions are used for the first time here. During program execution, cache hits occur for the loop. This is illustrated in Figure \ref{fig:cache_hit}. The instructions in the loop are put in the cache and then fetched soon. As a result, cache hits happen here.
+
+Apart from cache read access, we also checked cache write access, as shown in Figure \ref{fig:cache_write}. In this case, signal \textit{morw} is set to 1 to select data and \textit{cachewrite} is set to 1 to write it into cache.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_miss.png}
+  \caption{Cache Miss}
+  \label{fig:cache_miss}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_hit.png}
+  \caption{Cache Hit}
+  \label{fig:cache_hit}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{cache_write.png}
+  \caption{Cache Write}
+  \label{fig:cache_write}
+\end{figure}
 
 \section{Design Quality}\label{quality}
 
