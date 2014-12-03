@@ -764,19 +764,7 @@ demonstrated. For this purpose, assembly code is written, as shown in Listing
 \lstinputlisting[caption=Assembly code, label=lst:asm]{test.s}
 
 \section{Design Quality}\label{quality}
-% power: and=> 1.89E-05  WATTS
-%        inv=> 2.22E-05  WATTS
-%		 hi-inv=>  1.27E-05  WATTS
 
-
-In this section, performances of certain components, such as regular inverter, high-skew inverter as well as and gate, are evaluated using CAD tool(i.e.PSPICE) since we are not capable to perform evaluations directly on integrated circuits blocks due to the circuit size limitation from CAD tool. The corresponding results are shown in \textbf{Fig.\ref{fig:Spice}} for the setup time analysis of each component respectively. As can be seen clearly from the output waveform, the high-skew inverter pulls up faster than the regular inverter as expected. As for the power dissipation, the corresponding total power consumption of a and gate, inverter and high-skew inverter are $18.9\mu W$, $22.2\mu W$ and $12.7\mu W$, respectively. Therefore, skewed logic is clearly one of the high performance and low power-carry logic components available currently.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.23\textwidth]{inv} \includegraphics[scale=0.14]{hi} \includegraphics[width=0.3\textwidth]{and}
-  \caption{SPICE simulation of INV, high-skew INV and AND gate}
-  \label{fig:Spice}
-\end{figure}
 
 
 \section{Conclusion}\label{conclusion}
