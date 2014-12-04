@@ -11427,7 +11427,7 @@ Edvdd-1||D5G2;|pin@0||P
 X
 
 # Cell pad_corner;2{lay}
-Cpad_corner;2{lay}||mocmos|956033509000|1417577741779||DRC_last_good_drc()I1045699764|DRC_last_good_drc_bit()I19|DRC_last_good_drc_date()G1417562464090|prototype_center()I[291600,93600]
+Cpad_corner;2{lay}||mocmos|956033509000|1417721379186||DRC_last_good_drc()I1045699764|prototype_center()I[291600,93600]
 Ngeneric:Facet-Center|art@0||0|0||||AV
 NMetal-2-Pin|pin@0||-11.5|-159.5||||
 NMetal-2-Pin|pin@1||-159.5|-11.5||||
@@ -11495,10 +11495,10 @@ NMetal-1-Pin|pin@70||40|280||||
 NMetal-1-Pin|pin@71||40|336||||
 NMetal-1-Pin|pin@72||49|336||||
 NMetal-1-Pin|pin@73||49|366||||
-NMetal-1-Pin|pin@74||59|366||||
-NMetal-1-Pin|pin@75||59|337||||
-NMetal-1-Pin|pin@76||70|337||||
-NMetal-1-Pin|pin@77||70|281||||
+NMetal-1-Pin|pin@74||61|366||||
+NMetal-1-Pin|pin@75||61|337||||
+NMetal-1-Pin|pin@76||72|337||||
+NMetal-1-Pin|pin@77||72|281||||
 NMetal-1-Pin|pin@78||84|281||||
 NMetal-1-Pin|pin@79||84|235||||
 NMetal-1-Pin|pin@80||91|235||||
@@ -11594,11 +11594,11 @@ AMetal-1|net@71||17|S2700|pin@70||40|280|pin@71||40|336
 AMetal-1|net@72||17|S1800|pin@71||40|336|pin@72||49|336
 AMetal-1|net@73||17|S2700|pin@72||49|336|pin@73||49|366
 AMetal-1|net@74||1|S0|pin@73||49|366|pin@73||49|366
-AMetal-1|net@75||17|S1800|pin@73||49|366|pin@74||59|366
-AMetal-1|net@76||17|S900|pin@74||59|366|pin@75||59|337
-AMetal-1|net@77||17|S1800|pin@75||59|337|pin@76||70|337
-AMetal-1|net@78||17|S900|pin@76||70|337|pin@77||70|281
-AMetal-1|net@79||17|S1800|pin@77||70|281|pin@78||84|281
+AMetal-1|net@75||17|S1800|pin@73||49|366|pin@74||61|366
+AMetal-1|net@76||17|S900|pin@74||61|366|pin@75||61|337
+AMetal-1|net@77||17|S1800|pin@75||61|337|pin@76||72|337
+AMetal-1|net@78||17|S900|pin@76||72|337|pin@77||72|281
+AMetal-1|net@79||17|S1800|pin@77||72|281|pin@78||84|281
 AMetal-1|net@80||17|S900|pin@78||84|281|pin@79||84|235
 AMetal-1|net@81||17|S1800|pin@79||84|235|pin@80||91|235
 AMetal-1|net@82||17|S900|pin@80||91|235|pin@81||91|210
