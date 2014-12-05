@@ -596,20 +596,37 @@ The resulting design of the cache is shown in Figure \ref{fig:cache_arch}. Set s
 \end{figure}
 
 \section{MIPS Integration Architecture}\label{arch}
+Since our cache is used for both instructions and data, in following sections,
+	  when we say data from memory, we refer to both instructions and data unless specified
+	  otherwise.
+	  
+\subsection{Modified FSM}
 We adopt hierarchical top-down design methodology. We go through architecture
 level, schematic level and layout level. At architecture level, the Finite
 State Machine (FSM) is modified and the controller is changed accordingly, see
 Figure \ref{fig:fsm}. This is implemented in SystemVerilog and the functional simulation has
-been verified successfully before going down to schematic level. The overall
-MIPS microarchitecture is shown in Figure~\ref{fig:arch}.
+been verified successfully before going down to schematic level.
+
+In Figure \ref{fig:fsm}, the modified FSM is similar to the original MIPS processor FSM. But in order to integrate our on-chip cache into the processor, we added some states for cache accesses and some signals to control additional multiplexers.
+
+In total, we added 5 states. Previously, there are 13 states, i.e. from state 0 to state 12. We added an extra state bit and make it 5-bit FSM. The states we added are state 16 to state 19, and state 22 for cache read access. Besides, we modified state 8 for cache write access.
+
+State 16 to state 19 are added for instruction fetch. Take state 0 as an example. Instead of fetching off-chip memory directly, first it checks the status of the cache at state 0. Then it goes to state 16. If there is a cache hit, the multiplexer selects instruction from cache and puts it into instruction register. Otherwise it reads the instruction from off-chip memory and at the same time, \textit{cachewrite} signal is enabled and corresponding multiplexer select signal is set to store the instruction to the cache simultaneously. 
+
+For state 6, it reads data instead of instruction. It works in a similar way as it does for an instruction fetch. First it checks cache status at state 6 and then it reads data at state 22. Apart from \textit{cachewrite} signal and multiplexer select signal, the signal \textit{IorD} is set to 1 to read data.
+
+For state 8, this is a memory write access. For memory write access, we still use only 1 state instead of 2. This is because we have chosen write-through policy for cache, which means whenever a write access happens, the data is written back to both cache and off-chip memory simultaneously. Therefore there is no need to add an extra state. To write data into cache, we need to enable \textit{cachewrite} signal and select the data from datapath using the multiplexer. 
+
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.55\textwidth]{fsm}
+    \includegraphics[width=0.5\textwidth]{fsm}
   \caption{Modified FSM of Controller}
   \label{fig:fsm}
 \end{figure}
 
+
+\subsection{MIPS Microarchitecture}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.4\textwidth]{arch.pdf}
@@ -618,11 +635,9 @@ MIPS microarchitecture is shown in Figure~\ref{fig:arch}.
 \end{figure}
 
 
-Since our cache is used for both instructions and data, in following sections,
-	  when we say data, we refer to both instructions and data unless specified
-	  otherwise. 
+ 
 
-In Figure \ref{fig:arch}, three output signals (\textit{cachewrite, morw, morc}) and one input signal
+The MIPS microarchitecture with on-chip cache is shown in Figure~\ref{fig:arch}. In Figure \ref{fig:arch}, three output signals (\textit{cachewrite, morw, morc}) and one input signal
 (\textit{hit}) are added to the controller. 
 
 \begin{itemize}
@@ -641,13 +656,6 @@ is set to 0 and memory data is used.
 0 represents a cache miss. A compulsory miss strategy was implemented for an ensured miss for a first-time read from cache.
 \end{itemize}
 
-In Figure \ref{fig:fsm}, we split one state for data read
-access into two states. The first state is used to see if there is a cache hit.
-If so, at second state, data from cache is read; otherwise data is fetched from
-main memory. 
-
-We adopt write-through policy, so the data is always written to both cache and
-memory. For data write access, we still use one state.
 
 \section{Implementaion}\label{implementation}
 This section discusses the implementation process of cache components and integration in Electric.
