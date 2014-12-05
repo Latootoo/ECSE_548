@@ -751,8 +751,18 @@ processor is simulated for functional testing in Section \ref{subsec:func_test}.
 \subsection{Components Testing}\label{subsec:comp_test}
 The main components to be tested are shown below:
 \begin{itemize}
-\item Comparator
-\item Decoder
+\item Comparator \\
+
+The comparator was tested in ModelSim with 7 test cases; Figure \ref{fig:comp_test} indicates that the comparator was able to operate correctly, passing all test cases.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.25\textwidth]{comp_test}
+  \caption{ModelSim Test Results for Comparator}
+  \label{fig:comp_test}
+\end{figure}
+
+\item Decoder \\
 The 4-to-16 decoder was tested in ModelSim with all 16 test cases; the results showing that the design was operating properly is presented in Figure \ref{fig:decoder_test}.
 
 \begin{figure}[h!]
