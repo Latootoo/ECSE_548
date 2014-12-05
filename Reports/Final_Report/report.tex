@@ -807,7 +807,7 @@ This is the storage elements in cache. As shown in Figure \ref{fig:cache_arch}, 
 \subsection{Functional Testing}\label{subsec:func_test}
 In this section, the functional testing of MIPS SystemVerilog model is
 demonstrated. For this purpose, assembly code is written, as shown in Listing
-\ref{lst:asm}.
+\ref{lst:asm}. The assembly code load data from off-chip main memory, and some arithmetic manipulations are done. Then the result is written back to the main memory.
 
 \lstinputlisting[caption=Assembly Code, label=lst:asm]{test.s}
 At the beginning, instructions are fetched, and there are compulsory cache misses. The assembly code contains a loop to test cache hits. When dealing with this loop, there are cache hits. In Figure \ref{fig:cache_miss}, we can see that there is a cache miss. This happens because the instructions are used for the first time here. During program execution, cache hits occur for the loop. This is illustrated in Figure \ref{fig:cache_hit}. The instructions in the loop are put in the cache and then fetched soon. As a result, cache hits happen here.
@@ -854,7 +854,7 @@ In this section, performances of certain components, such as regular inverter, h
 \end{figure}
 
 \section{Conclusion}\label{conclusion}
-Cache can be implemented in a number of ways. By using different placement and replacement policies, there are different access time and design complexities. In this paper, we successfully designed a simple direct-mapped cache for an 8-bit MIPS processor. It is then implemented as schematic and layout respectively in Electric, and DRC, ERC and NCC tests all passed. In addition, we integrated the cache into the processor by modifying the controller FSM and verified the functionality by SystemVerilog testbench in ModelSim. Finally, we employed SPICE simulation for design quality test. Thus we have finished the project successfully by applying our knowledge from VLSI course and processor cache.
+Cache can be implemented in a number of ways. By using different placement and replacement policies, there are different access time and design complexities. In this paper, we successfully designed a direct-mapped cache--which is simple but demonstrates working principles of a cache--for an 8-bit MIPS processor. It is then implemented as schematic and layout respectively in Electric, and DRC, ERC and NCC tests all passed. In addition, we integrated the cache into the processor by modifying the controller FSM and verified the functionality by SystemVerilog testbench in ModelSim. Finally, we employed SPICE simulation for design quality test. Thus we have finished the project successfully by applying our knowledge from VLSI course and processor cache.
 
 
 
