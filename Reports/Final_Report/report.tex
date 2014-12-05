@@ -458,8 +458,8 @@ blocks. It has a size of 16 bytes and is used for both instructions and data. We
 apply a top-down design methodology, i.e. we start from the architecture level
 and go down to its layout, with testing on each level. To integrate the cache,
 	MIPS Finite State Machine (FSM) is modified accordingly, which results in
-	controller architecture modifications. Assembly code is also rewritten to verify
-	cache functionality by SystemVerilog simulation. Finally, design quality is tested using SPICE simulations.
+	controller architecture modifications. Assembly code is also rewritten to test
+	cache functionality by SystemVerilog simulation. Upon completing functionality verification, cache components are implemented and integrated in Electric, and then their testing methodology is explained. Finally, design quality is tested using SPICE simulations.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -601,6 +601,14 @@ Since our cache is used for both instructions and data, in following sections,
 	  otherwise.
 	  
 \subsection{Modified FSM}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{fsm}
+  \caption{Modified FSM of Controller}
+  \label{fig:fsm}
+\end{figure}
+
 We adopt hierarchical top-down design methodology. We go through architecture
 level, schematic level and layout level. At architecture level, the Finite
 State Machine (FSM) is modified and the controller is changed accordingly, see
@@ -618,12 +626,6 @@ For state 6, it reads data instead of instruction. It works in a similar way as 
 For state 8, this is a memory write access. For memory write access, we still use only 1 state instead of 2. This is because we have chosen write-through policy for cache, which means whenever a write access happens, the data is written back to both cache and off-chip memory simultaneously. Therefore there is no need to add an extra state. To write data into cache, we need to enable \textit{cachewrite} signal and select the data from datapath using the multiplexer. 
 
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.5\textwidth]{fsm}
-  \caption{Modified FSM of Controller}
-  \label{fig:fsm}
-\end{figure}
 
 
 \subsection{MIPS Microarchitecture}
