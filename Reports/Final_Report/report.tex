@@ -459,7 +459,7 @@ apply a top-down design methodology, i.e. we start from the architecture level
 and go down to its layout, with testing on each level. To integrate the cache,
 	MIPS Finite State Machine (FSM) is modified accordingly, which results in
 	controller architecture modifications. Assembly code is also rewritten to verify
-	cache functionality. Design quality is tested using SPICE.
+	cache functionality by SystemVerilog simulation. Finally, design quality is tested using SPICE simulations.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -702,7 +702,7 @@ The SRAM array is the most essential part of the cache, consisting of 16 \textit
 \end{figure}
 
 \subsection{Cache}\label{subsec:cache}
-After the implementation of all circuit components, the cache was built based on the microarchitecture of the proposed cache circuit design. For easy integrations with the MIPS processor, in the layout, universal \textit{vdd} and \textit{gnd} tracks were added that connects \textit{vdd} and \textit{gnd} of sub-components together. The Cache circuit design, along with the evidence that it passes all three design checks, is presented in Figure \ref{fig:cache}.
+After the implementation of all circuit components, the cache was built based on the microarchitecture of the proposed cache circuit design. For easy integrations with the MIPS processor, in the layout, universal \textit{vdd} and \textit{gnd} tracks were added that connects \textit{vdd} and \textit{gnd} of sub-components together. The cache circuit design, along with the evidence that it passes all three design checks, is presented in Figure \ref{fig:cache}.
 
 \begin{figure}[h!]
   \centering
@@ -835,9 +835,9 @@ In this section, performances of certain components, such as regular inverter, h
 
 \section{Conclusion}\label{conclusion}
 
-The Cache implementation can be mould in a number of ways, in terms of associativity which can decrease access time but increase complexity so in engineering world need to live with this trade-off. But basic working principal remains same.As discussed earlier we have successfully implemented the direct mapped cache and successful integration with MIPS.
+The cache can be implemented in a number of ways, in terms of associativity which can decrease access time but increase complexity so in engineering world need to live with this trade-off. But basic working principal remains same.As discussed earlier we have successfully implemented the direct mapped cache and successful integration with MIPS.
 cross severa the initially defined boundaries. It is important to understand that the
-Pentium(R) Processor uses only one method to implement cache. We have successfully tested the all components their simulation verification done in ModelSim, Schematic and layout implementation and testing done in Electric. We also employed Spice simulation.In short Cache is simply a high speed memory that stores a piece of main memory which helps processor for high performance
+Pentium(R) Processor uses only one method to implement cache. We have successfully tested the all components their simulation verification done in ModelSim, Schematic and layout implementation and testing done in Electric. We also employed SPICE simulation.In short Cache is simply a high speed memory that stores a piece of main memory which helps processor for high performance
 he conclusion goes here.
 
 
