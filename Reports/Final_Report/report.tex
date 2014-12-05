@@ -639,16 +639,16 @@ For state 8, this is a memory write access. For memory write access, we still us
 
  
 
-The MIPS microarchitecture with on-chip cache is shown in Figure~\ref{fig:arch}. In Figure \ref{fig:arch}, three output signals (\textit{cachewrite, morw, morc}) and one input signal
-(\textit{hit}) are added to the controller. 
+The MIPS microarchitecture with on-chip cache is shown in Figure~\ref{fig:arch}. In Figure \ref{fig:arch}, we can see that our cache is integrated. To make it work. two additional multiplexers are added. Besides, three output signals (\textit{cachewrite, morw, morc}) and one input signal
+(\textit{hit}) are added to the controller due to modified FSM, and they are explained as follows: 
 
 \begin{itemize}
 \item\textit{cachewrite} is used to
 enable write/read access to the cache with a value of 1/0. 
 
 \item\textit{morw} is used
-to select data from memory or datapath. If a cache miss happens, it is set
-to 0 and the data from memory is written into the cache. 
+to select data from memory or datapath. For a read access, if a cache miss happens, it is set
+to 0 and the data from memory is written into the cache. For a write access, it is set to 1 to send the datapath data to cache.
 
 \item\textit{morc} is used to select data from memory or from cache. If there is a
 cache hit, it is set to 1 and the data from cache is sent to MIPS. Otherwise it
@@ -772,7 +772,7 @@ The 4-to-16 decoder was tested in ModelSim with all 16 test cases; the results s
   \label{fig:decoder_test}
 \end{figure}
  
-\item SRAM: \\
+\item SRAM \\
 
 This is the storage elements in cache. As shown in Figure \ref{fig:cache_arch}, it has 16 sets and each set consists of 1 \textit{valid} bit, 4 \textit{tag} bits and 8 \textit{data} bits. The input signal \textit{we} is set to 0/1 for data read/write and the signal \textit{wl} is used to select the set for access. Initially, the \textit{valid} bit is 0. Once a cache set is written, its corresponding \textit{valid} becomes 1. \textit{valid} is used to indicate if the data has been loaded or not. We produce some random inputs for testing. Due to the complexity of memory accesses, we generate test vectors from the inputs using our \textit{Python} script, as shown in Figure \ref{fig:sram_test}. The signal representation is listed in Table \ref{table:sram}. The functionality of SRAM is verified successfully according to test vectors.
 
@@ -785,7 +785,7 @@ This is the storage elements in cache. As shown in Figure \ref{fig:cache_arch}, 
 
 \begin{table}[h]
 \centering
-\caption{SRAM Test Vector}
+\caption{SRAM Test Vector Representation}
 \label{table:sram}
 \begin{tabular}{c|c}
   \hline
