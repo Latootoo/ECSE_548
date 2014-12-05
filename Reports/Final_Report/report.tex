@@ -459,7 +459,7 @@ apply a top-down design methodology, i.e. we start from the architecture level
 and go down to its layout, with testing on each level. To integrate the cache,
 	MIPS Finite State Machine (FSM) is modified accordingly, which results in
 	controller architecture modifications. Assembly code is also rewritten to test
-	cache functionality by SystemVerilog simulation. Upon completing functionality verification, cache components are implemented and integrated in Electric, and then their testing methodology is explained. Finally, design quality is tested using SPICE simulations.
+	cache functionality by SystemVerilog simulation. Upon completing functionality verification, cache components are implemented and integrated in Electric, and then their testing methodology is explained in detail. In addition, design quality is tested using SPICE simulations.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -487,9 +487,9 @@ and go down to its layout, with testing on each level. To integrate the cache,
 
 \section{Introduction}
 
-Cache is a small memory that  contains the most recently accessed pieces of main memory, used to speed-up the processor-memory operation. Due to \textbf{Locality of Reference}, where a process at any given time accesses only a small region of memory, a cache helps significantly reduce processor I/O overhead by loading the small region that can be accessed by the processor with a much faster rate. For example, the typical memory access time of 60 ns of a Pentium processor can be reduced to 15 ns with the presence of a cache \cite{intel}.
+Cache is a small memory that is used to speed up the processor memory-related operation. Due to \textbf{Locality of Reference}, where a process at any given time accesses only a small region of memory, a cache helps significantly reduce processor I/O overhead by loading the small region that can be accessed by the processor with a much faster rate. For example, the typical memory access time of 60 ns of a Pentium processor can be reduced to 15 ns with the presence of a cache \cite{intel}. Usually data from memory as placed using \textit{modulo placement} policy, but other policies can also be applied, such as \textit{random placement} proposed in \cite{random_place}.
 
-In this report, we propose a design for a simple direct-mapped cache for MIPS processor using SRAM memory bits. The report is divided into seven sections. Section \ref{cache_arch} and Section \ref{arch} provides detailed descriptions of proposed design for cache architecture and modifications on the existing MIPS processor for the integration between the two parts; then Section \ref{implementation} presents the process of implementing the design. In Sections \ref{testing} and \ref{quality}, both functional and performance testing on the design is discussed. Section \ref{conclusion} concludes the design process along with the whole report.
+According to cache replacement policies, they can be classified as direct-mapped cache, set-associative cache, fully-associative cache, random cache \cite{random_replace} etc. In this paper, we propose a design for a simple direct-mapped cache for MIPS processor using SRAM memory elements. The paper is organized as follows. Section \ref{cache_arch} and Section \ref{arch} provides detailed descriptions of proposed design for cache architecture and modifications on the existing MIPS processor for the integration between the two parts; then Section \ref{implementation} presents the process of implementing the design. In Sections \ref{testing} and \ref{quality}, both functional and performance testing on the design is discussed. Section \ref{conclusion} concludes the design process.
 
 %
 % no \IEEEPARstart
@@ -734,7 +734,7 @@ Upon the completion and tests of each component, the cache was then integrated w
   \label{fig:mips}
 \end{figure}
 
-The pad frame was then generated from the new MIPS processor with cache implemented. To contain the much-expanded size of the MIPS, the size of the pad frame was extended from \textit{40} pads to \textit{64} pads. The resulting chip, along with error-free design rule check results, is shown in Figure \ref{fig:chip}. Due to page limits, a truncated version of design rule checks for the chip is presented in this report; the full check has been presented during the demo with the professor.
+The pad frame was then generated from the new MIPS processor with cache implemented. To contain the much-expanded size of the MIPS, the size of the pad frame was extended from \textit{40} pads to \textit{64} pads. The resulting chip, along with error-free design rule check results, is shown in Figure \ref{fig:chip}. Due to page limits, a truncated version of design rule checks for the chip is presented in this paper; the full check has been presented during the demo with the professor.
 
 \begin{figure}[h!]
   \centering
@@ -825,7 +825,7 @@ Apart from cache read access, we also checked cache write access, as shown in Fi
   \label{fig:cache_write}
 \end{figure}
 
-The result is shown in Figure \ref{fig:cache_write}. If cache is absent, the write address \textit{adr} is 76 and write data \textit{writedata} is 7. After we integrated on-chip cache, the result is still correct. Our cache functionality is thus verified.
+The functionality verification result is shown in Figure \ref{fig:cache_write}. If cache is absent, the write address \textit{adr} is 76 and write data \textit{writedata} is 7. After we integrated on-chip cache, the result is still correct. Our cache functionality is thus verified.
 
 \section{Design Quality}\label{quality}
  
@@ -834,7 +834,7 @@ The result is shown in Figure \ref{fig:cache_write}. If cache is absent, the wri
 %		 hi-inv=>  1.27E-05  WATTS
  
  
-In this section, performances of certain components, such as regular inverter, high-skew inverter as well as and gate, are evaluated using CAD tool(i.e.PSPICE) since we are not capable to perform evaluations directly on integrated circuits blocks due to the circuit size limitation from CAD tool. The corresponding results are shown in \textbf{Fig.\ref{fig:Spice}} for the setup time analysis of each component respectively. As can be seen clearly from the output waveform, the high-skew inverter pulls up faster than the regular inverter as expected. As for the power dissipation, the corresponding total power consumption of a and gate, inverter and high-skew inverter are $18.9\mu W$, $22.2\mu W$ and $12.7\mu W$, respectively. Therefore, skewed logic is clearly one of the high performance and low power-carry logic components available currently.
+In this section, performances of certain components, such as regular inverter, high-skew inverter as well as and gate, are evaluated using CAD tool(i.e.PSPICE) since we are not capable to perform evaluations directly on integrated circuits blocks due to the circuit size limitation from CAD tool. The corresponding results are shown in Figure \ref{fig:Spice} for the setup time analysis of each component respectively. As can be seen clearly from the output waveform, the high-skew inverter pulls up faster than the regular inverter as expected. As for the power dissipation, the corresponding total power consumption of a and gate, inverter and high-skew inverter are $18.9\mu W$, $22.2\mu W$ and $12.7\mu W$, respectively. Therefore, skewed logic is clearly one of the high performance and low power-carry logic components available currently.
 
 \begin{figure}[h!]
   \centering
@@ -844,12 +844,7 @@ In this section, performances of certain components, such as regular inverter, h
 \end{figure}
 
 \section{Conclusion}\label{conclusion}
-
-The cache can be implemented in a number of ways, in terms of associativity which can decrease access time but increase complexity so in engineering world need to live with this trade-off. But basic working principal remains same.As discussed earlier we have successfully implemented the direct mapped cache and successful integration with MIPS.
-cross severa the initially defined boundaries. It is important to understand that the
-Pentium(R) Processor uses only one method to implement cache. We have successfully tested the all components their simulation verification done in ModelSim, Schematic and layout implementation and testing done in Electric. We also employed SPICE simulation.In short Cache is simply a high speed memory that stores a piece of main memory which helps processor for high performance
-he conclusion goes here.
-
+Cache can be implemented in a number of ways. By using different placement and replacement policies, there are different access time and design complexities. In this paper, we successfully designed a simple direct-mapped cache for an 8-bit MIPS processor. It is then implemented as schematic and layout respectively in Electric, and DRC, ERC and NCC tests all passed. In addition, we integrated the cache into the processor by modifying the controller FSM and verified the functionality by SystemVerilog testbench in ModelSim. Finally, we employed SPICE simulation for design quality test. Thus we have finished the project successfully by applying our knowledge from VLSI course and processor cache.
 
 
 
@@ -892,6 +887,14 @@ he conclusion goes here.
 
 \bibitem{intel}http://download.intel.com/design/intarch/papers/cache6.pdf
 
+\bibitem{random_place}Kosmidis L, Abella J, Qui˜nones E, Cazorla FJ (2013a) A cache design for probabilistically
+analysable real-time systems. In: Proceedings of the Conference on Design, Automation
+and Test in Europe, EDA Consortium, San Jose, CA, USA, DATE ’13, pp 513–518, URL
+http://dl.acm.org/citation.cfm?id=2485288.2485416
+
+\bibitem{random_replace}Quinones E, Berger E, Bernat G, Cazorla F (2009) Using randomized caches in probabilistic
+real-time systems. In: Real-Time Systems, 2009. ECRTS ’09. 21st Euromicro Conference
+on, pp 129–138, DOI 10.1109/ECRTS.2009.30
 
 \end{thebibliography}
 
