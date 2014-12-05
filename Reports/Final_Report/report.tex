@@ -456,7 +456,7 @@ In this paper, we present an on-chip cache design and integration for 8-bit MIPS
 processor. The cache that we adopt is a direct-mapped cache with 1 byte cache
 blocks. It has a size of 16 bytes and is used for both instructions and data. We
 apply a top-down design methodology, i.e. we start from the architecture level
-and go down to its layout, with testings on each level. To integrate the cache,
+and go down to its layout, with testing on each level. To integrate the cache,
 	MIPS Finite State Machine (FSM) is modified accordingly, which results in
 	controller architecture modifications. Assembly code is also rewritten to verify
 	cache functionality. Design quality is tested using SPICE.
@@ -487,9 +487,9 @@ and go down to its layout, with testings on each level. To integrate the cache,
 
 \section{Introduction}
 
-Cache is a small memory that  contains the most recently accessed pieces of main memory, used to speed-up the processor-memory operation. Due to \textbf{Locality of Reference}, where a process at any given time accesses only a small region of memory, a cache helps significantly reduce processor I/O overhead by loading the small region that can be accessed by the processor with a much faster rate. For example, the typicall memory access time of 60 ns of a Pentium processor can be reduced to 15 ns with the presence of a cache \cite{intel}.
+Cache is a small memory that  contains the most recently accessed pieces of main memory, used to speed-up the processor-memory operation. Due to \textbf{Locality of Reference}, where a process at any given time accesses only a small region of memory, a cache helps significantly reduce processor I/O overhead by loading the small region that can be accessed by the processor with a much faster rate. For example, the typical memory access time of 60 ns of a Pentium processor can be reduced to 15 ns with the presence of a cache \cite{intel}.
 
-In this report, we propose a design for a simple direct-mapped cache for MIPS processor using SRAM memory bits. The report is divided into seven sections. Section \ref{cache_arch} and Section \ref{arch} provides detailed descriptions of propsed design for cache architecture and modifications on the existing MIPS processor for the integration between the two parts; then Section \ref{implementation} presents the process of implementing the design. In Sections \ref{testing} and \ref{quality}, both functional and performance testing on the design is discussed. Section \ref{conclusion} concludes the design process along with the whole report.
+In this report, we propose a design for a simple direct-mapped cache for MIPS processor using SRAM memory bits. The report is divided into seven sections. Section \ref{cache_arch} and Section \ref{arch} provides detailed descriptions of proposed design for cache architecture and modifications on the existing MIPS processor for the integration between the two parts; then Section \ref{implementation} presents the process of implementing the design. In Sections \ref{testing} and \ref{quality}, both functional and performance testing on the design is discussed. Section \ref{conclusion} concludes the design process along with the whole report.
 
 %
 % no \IEEEPARstart
@@ -584,14 +584,14 @@ In this report, we propose a design for a simple direct-mapped cache for MIPS pr
 % command of the stfloats package.
 
 \section{Cache Architecture}\label{cache_arch}
-The MIPS processor presented in the course takes an 8-bit address line and 8-bit data line every time it reads data from external memory; to maintain a manageable project scale while ensuring basic functioanlity of the cache, the cache was designed to split up the address line into a 4-bit tag line and a 4-bit set line, where set signals are used for row selection in cache whereas tag signals are used for comparison to generate cache hits. The designed configuration results in a 16 8-bit data row in cache, making it capable of storing 16 bytes (4 distinctive assembly instructions) for MIPS.
+The MIPS processor presented in the course takes an 8-bit address line and 8-bit data line every time it reads data from external memory; to maintain a manageable project scale while ensuring basic functionality of the cache, the cache was designed to split up the address line into a 4-bit tag line and a 4-bit set line, where set signals are used for row selection in cache whereas tag signals are used for comparison to generate cache hits. The designed configuration results in a 16 8-bit data row in cache, making it capable of storing 16 bytes (4 distinctive assembly instructions) for MIPS.
 
-The resulting design of the cache is shown in Figure \ref{fig:cache_arch}. Set signals are used to decode data rows inside SRAM arrays, and tag signals are used to compare the tags stored in cache to generate cache hit signals. Wite enable (\textit{we} as shown in figure) signal ensures the cache is writeable whenever it set to high. Additionally, for better stability, a validation bit (\textit{v}) was added to each row of SRAM array inside the cache to implement \textit{Compulsory Miss Strategy}, where the first read from cache is always guaranteed to generate a cache miss signal.
+The resulting design of the cache is shown in Figure \ref{fig:cache_arch}. Set signals are used to decode data rows inside SRAM arrays, and tag signals are used to compare the tags stored in cache to generate cache hit signals. Write enable (\textit{we} as shown in figure) signal ensures the cache is writeable whenever it set to high. Additionally, for better stability, a validation bit (\textit{v}) was added to each row of SRAM array inside the cache to implement \textit{Compulsory Miss Strategy}, where the first read from cache is always guaranteed to generate a cache miss signal.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.45\textwidth]{cache_arch}
-  \caption{Cache Microarchiture}
+  \caption{Cache Microarchitecture}
   \label{fig:cache_arch}
 \end{figure}
 
@@ -613,7 +613,7 @@ MIPS microarchitecture is shown in Figure~\ref{fig:arch}.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.4\textwidth]{arch.pdf}
-  \caption{MIPS Microarchiture}
+  \caption{MIPS Microarchitecture}
   \label{fig:arch}
 \end{figure}
 
@@ -669,7 +669,7 @@ Figure \ref{fig:comparator_check} indicates that the comparator design was valid
 \end{figure}
 
 \subsection{4-to-16 Row Decoder}\label{subsec:decoder}
-In order for the cache to make use of the 4-bit set signals, a row decoder was applied to decode the set signal and select 1 out of 16 8-bit data lines lying inside the cache. In order to reduce the delay and space usage of the decoder, \textit{pre-decoding} technology was used, resulting in a design shown in Figure \ref{fig:decoder}. It was worth noting that the layout of the decoder was delibrately designed to be wide with a minimum height in order to pitch-match with the sram array inside the cache.
+In order for the cache to make use of the 4-bit set signals, a row decoder was applied to decode the set signal and select 1 out of 16 8-bit data lines lying inside the cache. In order to reduce the delay and space usage of the decoder, \textit{pre-decoding} technology was used, resulting in a design shown in Figure \ref{fig:decoder}. It was worth noting that the layout of the decoder was deliberately designed to be wide with a minimum height in order to pitch-match with the SRAM array inside the cache.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.15\textwidth]{decoder_sch} \includegraphics[width=0.3\textwidth]{decoder_check} \includegraphics[scale=0.25]{decoder_lay}
@@ -712,7 +712,7 @@ After the implementation of all circuit components, the cache was built based on
 \end{figure}
 
 \subsection{PLA Controller \& Controller}\label{subsec:controller}
-As indicated in Section \ref{arch}, with updated FSM for the controller, the PLA controller which represents the FSM logic has been modified accordingly. With an updated FSM description file, a new PLA controller was generated and re-integrated into the controller citcuit of MIPS processor. New exports corresponding to cache signals have been added to the controller circtui as well. The resulting circuit is presented in the next sub-section.
+As indicated in Section \ref{arch}, with updated FSM for the controller, the PLA controller which represents the FSM logic has been modified accordingly. With an updated FSM description file, a new PLA controller was generated and re-integrated into the controller circuit of MIPS processor. New exports corresponding to cache signals have been added to the controller circuit as well. The resulting circuit is presented in the next sub-section.
 
 \subsection{Integration}\label{subsec:integration}
 Upon the completion and tests of each component, the cache was then integrated with MIPS processor (with updated controller component), resulting in a circuit presented in Figure \ref{fig:mips}.
@@ -881,7 +881,6 @@ he conclusion goes here.
 \begin{thebibliography}{1}
 
 \bibitem{intel}http://download.intel.com/design/intarch/papers/cache6.pdf
-The conclusion goes here.
 
 
 \end{thebibliography}
